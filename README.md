@@ -61,6 +61,7 @@ Fedora, the [ArchRPkgs](https://github.com/dvdesolve/ArchRPkgs) repo for Arch
 and the [r2u](https://github.com/eddelbuettel/r2u) repo again for Ubuntu.
 These are tightly integrated and can be fully managed without leaving the R
 console thanks to the [`bspm`](https://github.com/Enchufa2/bspm) package.
+See [this paper](https://arxiv.org/abs/2103.08069) for a detailed review.
 
 On the other hand, RStudio recently took a complementary approach by building
 binaries---for various distributions, R versions and architectures---and serving
