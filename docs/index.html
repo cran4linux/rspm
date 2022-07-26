@@ -45,6 +45,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -98,6 +101,19 @@
 <p>To enable it by default, put the following into your <code>.Rprofile</code>:</p>
 <pre><code><span><span class="fu">rspm</span><span class="fu">::</span><span class="fu"><a href="reference/integration.html">enable</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># wrap it in suppressMessages() to avoid the initial message</span></span></code></pre>
 <p>Then, run <code>install.packages</code> as usual, and <code>rspm</code> will take care of the rest.</p>
+</div>
+<div class="section level2">
+<h2 id="technical-details">Technical details<a class="anchor" aria-label="anchor" href="#technical-details"></a>
+</h2>
+<p>Since <em>always</em>, Linux R users have been struggling with source installations and manual management of build dependencies. Several projects over the years tried to lessen this pain by building repositories of binaries that complement and scale up the offer by various distributions. See e.g. the <a href="https://launchpad.net/~c2d4u.team/+archive/ubuntu/c2d4u4.0+" class="external-link">c2d4u.team/c2d4u4.0+</a> PPA repo for Ubuntu or, more recently, the <a href="https://build.opensuse.org/project/show/devel:languages:R:autoCRAN" class="external-link">autoCRAN</a> OBS repo for OpenSUSE, the <a href="https://copr.fedorainfracloud.org/coprs/iucar/cran/" class="external-link">iucar/cran</a> Copr repo for Fedora, the <a href="https://github.com/dvdesolve/ArchRPkgs" class="external-link">ArchRPkgs</a> repo for Arch and the <a href="https://github.com/eddelbuettel/r2u" class="external-link">r2u</a> repo again for Ubuntu. These are tightly integrated and can be fully managed without leaving the R console thanks to the <a href="https://github.com/Enchufa2/bspm" class="external-link"><code>bspm</code></a> package.</p>
+<p>On the other hand, RStudio recently took a complementary approach by building binaries—for various distributions, R versions and architectures—and serving them via their own CRAN mirror, also called the <a href="https://packagemanager.rstudio.com/" class="external-link">RStudio Public Package Manager (RSPM)</a>. In contrast to the previous solutions, this method allows the user to install binary packages as <em>user packages</em> under their home directory (virtually anywhere), instead of as <em>system packages</em>. The main issue is that the user has still to manage run-time system requirements themselves (i.e., shared libraries required by some packages to work), so this method by itself produces installations that are fundamentally broken.</p>
+<p>To fill this gap, this package not only provides an easy setup of RSPM, but also monitors and scans every installation for missing system requirements, and then automatically downloads, installs and configures them, relieving the user of this task. This is done following the same complementary philosophy: <strong>everything is installed as <em>user packages</em> under the home directory</strong>. More specifically, this package uses the path <code>~/.local/share/R/rspm</code> for this.</p>
+<p>The main technical issue here is that libraries are search for only in a few pre-configured places that belong to the system (such as <code>/usr/lib</code>), and thus we need a mechanism to feed our new user-hosted library paths to R packages, hopefully without restarting R and managing environment variables. This is achieved by <strong>automatically updating the <code>RPATH</code></strong> of every <code>.so</code> binary in our user R packages. This <code>RPATH</code> is an optional entry that lives in the header of ELF executables and shared libraries, and it is used by the dynamic linker as the primary search path if exists. Therefore, it is the perfect mechanism for this task, because it can be applied dynamically as new installations are made, and without requiring any special privilege.</p>
+</div>
+<div class="section level2">
+<h2 id="support">Support<a class="anchor" aria-label="anchor" href="#support"></a>
+</h2>
+<p>Currently, CentOS 8 and Ubuntu (tested on <em>jammy</em>) are supported. If you find any bug or you’d like to request support for other distributions (importantly, they must be supported by RStudio), please file issues at our <a href="https://github.com/Enchufa2/rspm/issues" class="external-link">GitHub issue tracker</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
