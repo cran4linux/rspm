@@ -15,7 +15,7 @@ install_sysreqs <- function() {
     return(invisible())
 
   # install sysreqs and update rpath
-  get(paste0(os()$name, "_install_sysreqs"), asNamespace("rspm"))(libs)
+  get(paste0(os()$id, "_install_sysreqs"), asNamespace("rspm"))(libs)
   set_rpath()
 }
 
@@ -51,7 +51,7 @@ ldd_missing <- function(x) {
 }
 
 check_requirements <- function(cmd) {
-  preqs <- get(paste0(os()$name, "_requirements"), asNamespace("rspm"))
+  preqs <- get(paste0(os()$id, "_requirements"), asNamespace("rspm"))
   preqs <- Sys.which(preqs)
   if (length(x <- names(preqs)[preqs == ""]))
     stop("please, install the following required utilities: ", x, call.=FALSE)
@@ -64,7 +64,7 @@ check_requirements <- function(cmd) {
 
   if (length(missing <- basename(names(reqs))[reqs == ""])) {
     cat("Downloading and installing required utilities...\n")
-    get(paste0(os()$name, "_install"), asNamespace("rspm"))(missing)
+    get(paste0(os()$id, "_install"), asNamespace("rspm"))(missing)
     reqs <- Sys.which(names(reqs))
   }
 

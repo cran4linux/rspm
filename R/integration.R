@@ -66,18 +66,16 @@ opt <- new.env(parent=emptyenv())
 }
 
 os <- function() {
-  if (file.exists(f <- "/etc/lsb-release")) {
-    rel <- tolower(readLines(f))
-    rel <- sapply(strsplit(grep("_id|_code", rel, value=TRUE), "="), "[", 2)
-  } else if (file.exists(f <- "/etc/redhat-release")) {
-    rel <- tolower(readLines(f))
-    rel <- c(strsplit(rel, " ")[[1]][1], sub("\\D*(\\d+).*", "\\1", rel))
-    rel <- rep(paste(rel, collapse=""), 2)
-  }
-  if (exists("rel") && rel[1] %in% c("ubuntu", "centos8"))
-    return(stats::setNames(as.list(rel), c("name", "code")))
-  # not supported
-  stop("OS not supported", call.=FALSE)
+  os <- read.table("/etc/os-release", sep="=", col.names=c("var", "val"))
+
+  code <- switch(
+    id <- subset(os, var == "ID")$val,
+    "ubuntu" = subset(os, var == "VERSION_CODENAME")$val,
+    "centos" = paste0(id, subset(os, var == "VERSION_ID")$val),
+    stop("OS not supported", call.=FALSE)
+  )
+
+  list(id = id, code = code)
 }
 
 user_dir <- function(path="") {

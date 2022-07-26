@@ -1,6 +1,6 @@
-centos8_requirements <- c()
+centos_requirements <- c()
 
-centos8_install <- function(pkgs) {
+centos_install <- function(pkgs) {
   dir.create(temp <- tempfile("rspm_"))
   old <- setwd(temp)
   on.exit(setwd(old))
@@ -9,7 +9,7 @@ centos8_install <- function(pkgs) {
          "-r", user_dir(), "*")
 }
 
-centos8_install_sysreqs <- function(libs) {
+centos_install_sysreqs <- function(libs) {
   cat("Downloading and installing sysreqs...\n")
-  centos8_install(paste0("*/", libs, collapse=" "))
+  centos_install(paste0("*/", libs, collapse=" "))
 }
