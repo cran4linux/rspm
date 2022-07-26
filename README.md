@@ -40,3 +40,9 @@ rspm::enable() # wrap it in suppressMessages() to avoid the initial message
 ```
 
 Then, run `install.packages` as usual, and `rspm` will take care of the rest.
+
+## Disclaimer
+
+_RStudio_ is a registered trademark of [RStudio, PBC](https://www.rstudio.com/).
+This software provides access to a public repository maintained by RStudio and
+provided to the open-source community for free, but has no association with it.
