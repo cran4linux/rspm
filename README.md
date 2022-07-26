@@ -1,5 +1,10 @@
 # rspm: RStudio Package Manager
 
+<!-- badges: start -->
+[![Build Status](https://github.com/Enchufa2/rspm/workflows/build/badge.svg)](https://github.com/Enchufa2/rspm/actions)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rspm)](https://cran.r-project.org/package=rspm)
+<!-- badges: end -->
+
 ## Key features
 
 - Connects to [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
@@ -88,10 +93,10 @@ made, and without requiring any special privilege.
 
 ## Support
 
-Currently, CentOS 8 and Ubuntu (tested on _jammy_) are supported. If you find
-any bug or you'd like to request support for other distributions (importantly,
-they must be supported by RStudio), please file issues at our
-[GitHub issue tracker](https://github.com/Enchufa2/rspm/issues).
+Currently, CentOS 8 and Ubuntu (tested on _bionic_, _focal_ and _jammy_) are
+supported. If you find any bug or you'd like to request support for other
+distributions (importantly, they must be supported by RStudio), please file
+issues at our [GitHub issue tracker](https://github.com/Enchufa2/rspm/issues).
 
 ## Disclaimer
 

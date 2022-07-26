@@ -1,0 +1,52 @@
+name: build
+on: [push, pull_request]
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
+    runs-on: ubuntu-latest
+    name: ${{ matrix.config.distro }}:${{ matrix.config.version }}
+    container:
+      image: ${{ matrix.config.distro }}:${{ matrix.config.version }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {distro: 'quay.io/centos/centos', version: 'stream8'}
+        - {distro: 'ubuntu', version: '18.04'}
+        - {distro: 'ubuntu', version: '20.04'}
+        - {distro: 'ubuntu', version: '22.04'}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies (CentOS)
+      if: ${{ matrix.config.version == 'stream8' }}
+      run: |
+        dnf config-manager --set-enabled powertools
+        dnf install -y epel-release epel-next-release
+        dnf install -y R-core
+
+    - name: Install dependencies (Ubuntu)
+      if: ${{ matrix.config.distro == 'ubuntu' }}
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        apt update && apt install -y r-base-core apt-file
+
+    - name: Check
+      env:
+        LANG: C.UTF-8
+        _R_CHECK_CRAN_INCOMING_REMOTE_: false
+      run: |
+        Rscript -e 'install.packages("tinytest", repos="https://cran.r-project.org")'
+        R CMD build . && mkdir check
+        R CMD check rspm_*.tar.gz --no-manual -o check
+
+    - name: Upload check results
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@master
+      with:
+        name: r-${{ matrix.config.distro }}-${{ matrix.config.version }}-results
+        path: check

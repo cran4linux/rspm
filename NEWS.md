@@ -1,3 +1,3 @@
 # rspm 0.1.0
 
-- Initial release, with support for CentOS 8 and Ubuntu (tested on jammy).
+- Initial release, with support for CentOS 8 and Ubuntu.
