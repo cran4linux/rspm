@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     name: ${{ matrix.config.image }}:${{ matrix.config.tag }}
     container:
-      image: ${{ matrix.config.repo }}/${{ matrix.config.image }}:${{ matrix.config.tag }}
+      image: ${{ matrix.config.repo }}${{ matrix.config.image }}:${{ matrix.config.tag }}
 
     strategy:
       fail-fast: false
       matrix:
         config:
-        - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos'}
-        - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos'}
+        - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos/'}
+        - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos/'}
         - {image: 'ubuntu', tag: '18.04',   repo: ''}
         - {image: 'ubuntu', tag: '20.04',   repo: ''}
         - {image: 'ubuntu', tag: '22.04',   repo: ''}
