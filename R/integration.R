@@ -70,13 +70,15 @@ os <- function() {
                           stringsAsFactors=FALSE)
   os <- stats::setNames(as.list(os$val), os$var)
   code <- switch(
-    id <- os$ID,
+    id <- strsplit(os$ID, "-")[[1]][1],
     "ubuntu" = os$VERSION_CODENAME,
     "centos" = paste0(id, os$VERSION_ID),
     "rocky"  = , "almalinux" = , "ol" = ,
     "rhel"   = paste0("centos", strsplit(os$VERSION_ID, "\\.")[[1]][1]),
     "amzn"   = if (os$VERSION_ID == "2") "centos7" else
       stop("OS not supported", call.=FALSE),
+    "sles"   = , "opensuse" =
+      paste0("opensuse", sub("\\.", "", os$VERSION_ID)),
     stop("OS not supported", call.=FALSE)
   )
   list(id = id, code = code)
