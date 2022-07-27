@@ -25,7 +25,6 @@ jobs:
     - name: Install dependencies (CentOS 7)
       if: ${{ matrix.config.tag == 'centos7' }}
       run: |
-        echo "LANG=en_US.utf-8" > set-locale
         yum install -y epel-release
         yum install -y R-core
 
@@ -41,14 +40,13 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo "LANG=C.utf-8" > set-locale
         apt update && apt install -y r-base-core apt-file
 
     - name: Check
       env:
         _R_CHECK_CRAN_INCOMING_REMOTE_: false
       run: |
-        . set-locale && export LANG
+        export LANG=$(locale -a | grep utf8)
         Rscript -e 'install.packages("tinytest", repos="https://cran.r-project.org")'
         R CMD build . && mkdir check
         R CMD check rspm_*.tar.gz --no-manual -o check
