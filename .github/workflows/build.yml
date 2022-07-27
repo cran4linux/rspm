@@ -18,7 +18,7 @@ jobs:
         - {image: 'ubuntu', tag: '18.04',   repo: ''}
         - {image: 'ubuntu', tag: '20.04',   repo: ''}
         - {image: 'ubuntu', tag: '22.04',   repo: ''}
-        - {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
+        #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
 
     steps:
     - uses: actions/checkout@v2
