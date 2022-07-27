@@ -9,13 +9,14 @@ centos_install <- function(pkgs) {
          "-r", user_dir(), "*")
 }
 
+centos_install_sysreqs <- function(libs) {
+  cat("Downloading and installing sysreqs...\n")
+  centos_install(paste0("*/", libs, collapse=" "))
+}
+
 centos_cmd <- function() {
   cmd <- "yum install --downloadonly --downloaddir=."
   if (Sys.which("dnf") != "")
     cmd <- "dnf download --resolve"
-}
-
-centos_install_sysreqs <- function(libs) {
-  cat("Downloading and installing sysreqs...\n")
-  centos_install(paste0("*/", libs, collapse=" "))
+  cmd
 }
