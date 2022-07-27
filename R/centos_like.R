@@ -1,0 +1,17 @@
+rhel_requirements <- c()
+amzn_requirements <- c()
+rocky_requirements <- c()
+almalinux_requirements <- c()
+ol_requirements <- c()
+
+rhel_install <- function(pkgs) centos_install(pkgs)
+amzn_install <- function(pkgs) centos_install(pkgs)
+rocky_install <- function(pkgs) centos_install(pkgs)
+almalinux_install <- function(pkgs) centos_install(pkgs)
+ol_install <- function(pkgs) centos_install(pkgs)
+
+rhel_install_sysreqs <- function(libs) centos_install_sysreqs(libs)
+amzn_install_sysreqs <- function(libs) centos_install_sysreqs(libs)
+rocky_install_sysreqs <- function(libs) centos_install_sysreqs(libs)
+almalinux_install_sysreqs <- function(libs) centos_install_sysreqs(libs)
+ol_install_sysreqs <- function(libs) centos_install_sysreqs(libs)
