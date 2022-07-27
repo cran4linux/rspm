@@ -4,9 +4,15 @@ centos_install <- function(pkgs) {
   dir.create(temp <- tempfile("rspm_"))
   old <- setwd(temp)
   on.exit(setwd(old))
-  system("dnf download --resolve", p(pkgs))
+  system(centos_cmd(), p(pkgs))
   system("rpm -i --nodeps --noscripts --notriggers --nosignature --excludedocs",
          "-r", user_dir(), "*")
+}
+
+centos_cmd <- function() {
+  cmd <- "yum install --downloadonly --downloaddir=."
+  if (Sys.which("dnf") != "")
+    cmd <- "dnf download --resolve"
 }
 
 centos_install_sysreqs <- function(libs) {
