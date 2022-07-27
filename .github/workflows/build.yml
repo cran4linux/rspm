@@ -18,6 +18,7 @@ jobs:
         - {image: 'ubuntu', tag: '18.04',   repo: ''}
         - {image: 'ubuntu', tag: '20.04',   repo: ''}
         - {image: 'ubuntu', tag: '22.04',   repo: ''}
+        #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
 
     steps:
     - uses: actions/checkout@v2
@@ -41,6 +42,13 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         apt update && apt install -y r-base-core apt-file
+
+    - name: Install dependencies (openSUSE)
+      if: ${{ matrix.config.image == 'leap' }}
+      run: |
+        zypper addrepo https://download.opensuse.org/repositories/Education/15.3/Education.repo
+        zypper --gpg-auto-import-keys refresh
+        zypper install -y R-base-devel gcc-c++ udunits2-devel # binary not provided :(
 
     - name: Check
       env:

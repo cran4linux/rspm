@@ -15,6 +15,7 @@
 - **Fully user mode**, no root privileges required.
 - Support for **CentOS / RHEL** 7 and 8, and several RHEL derivatives:
   Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2.
+- Support for **openSUSE / SLES** 15.3.
 - Support for **Ubuntu** 18.04, 20.04 and 22.04 (requires `apt-file`).
 
 Both R packages and system dependencies **are installed into the user home**.
