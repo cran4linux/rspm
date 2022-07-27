@@ -74,6 +74,7 @@ os <- function() {
     "ubuntu" = os$VERSION_CODENAME,
     "centos" = paste0(id, os$VERSION_ID),
     "rhel"   = paste0("centos", substr(os$VERSION_ID, 1, 1)),
+    "amzn"   = ifelse(os$VERSION_ID == 2, "centos7", stop("unknown AL version")),
     stop("OS not supported", call.=FALSE)
   )
   list(id = id, code = code)
