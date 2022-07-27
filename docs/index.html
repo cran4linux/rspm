@@ -78,14 +78,15 @@
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Connects to <a href="https://packagemanager.rstudio.com/" class="external-link">RStudio Public Package Manager</a> to provide <strong>fast binary installations</strong> of R packages on Linux distributions.</li>
+<li>Connects to <a href="https://packagemanager.rstudio.com/" class="external-link">RStudio Public Package Manager</a> to provide <strong>fast binary installations</strong> of R packages on Linux.</li>
 <li>
 <strong>Complete coverage</strong> of CRAN and BioConductor packages.</li>
 <li>
 <strong>Full integration</strong> with the system package manager to resolve, download and configure system requirements automagically without leaving your R console.</li>
 <li>
 <strong>Fully user mode</strong>, no root privileges required.</li>
-<li>Support for <strong>CentOS / RHEL</strong> 7 and 8, and several RHEL derivatives: Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2.</li>
+<li>Support for <strong>CentOS / RHEL</strong> 7 and 8.</li>
+<li>Support for <strong>RHEL derivatives</strong>: Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2.</li>
 <li>Support for <strong>openSUSE / SLES</strong> 15.3.</li>
 <li>Support for <strong>Ubuntu</strong> 18.04, 20.04 and 22.04 (requires <code>apt-file</code>).</li>
 </ul>
@@ -118,7 +119,14 @@
 <div class="section level2">
 <h2 id="support">Support<a class="anchor" aria-label="anchor" href="#support"></a>
 </h2>
-<p>If you find any bug or you’d like to request support for other distributions (importantly, they must be supported by RStudio), please file issues at our <a href="https://github.com/Enchufa2/rspm/issues" class="external-link">GitHub issue tracker</a>.</p>
+<p>If you find any bug or you’d like to request support for other distributions (importantly, they must be supported by RStudio), please file issues at our <a href="https://github.com/Enchufa2/rspm/issues" class="external-link">GitHub issue tracker</a>. Note though that some quirks may be expected:</p>
+<ul>
+<li>
+<em>Some library is not found</em>. This means that the library version in your system is different from what RStudio had when the package was built. This is more likely to happen in derivatives (e.g. Amazon Linux) that drift away from their parent.</li>
+<li>
+<em>Some package is installed from source</em>. This means that RStudio has no binary version for that package.</li>
+</ul>
+<p>There is nothing <em>we</em> can do from <code>rspm</code> in either case, so please <strong>do not</strong> file issues about them. Unfortunately, the best <em>you</em> can do is to install the development packages for the required library and force a source installation (i.e. <em>business as usual</em>).</p>
 </div>
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>

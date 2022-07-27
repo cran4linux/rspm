@@ -8,12 +8,13 @@
 ## Key features
 
 - Connects to [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
-  to provide **fast binary installations** of R packages on Linux distributions.
+  to provide **fast binary installations** of R packages on Linux.
 - **Complete coverage** of CRAN and BioConductor packages. 
 - **Full integration** with the system package manager to resolve, download and
   configure system requirements automagically without leaving your R console.
 - **Fully user mode**, no root privileges required.
-- Support for **CentOS / RHEL** 7 and 8, and several RHEL derivatives:
+- Support for **CentOS / RHEL** 7 and 8.
+- Support for **RHEL derivatives**:
   Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2.
 - Support for **openSUSE / SLES** 15.3.
 - Support for **Ubuntu** 18.04, 20.04 and 22.04 (requires `apt-file`).
@@ -100,6 +101,19 @@ made, and without requiring any special privilege.
 If you find any bug or you'd like to request support for other distributions
 (importantly, they must be supported by RStudio), please file issues at our
 [GitHub issue tracker](https://github.com/Enchufa2/rspm/issues).
+Note though that some quirks may be expected:
+
+- _Some library is not found_. This means that the library version in your
+  system is different from what RStudio had when the package was built. This is
+  more likely to happen in derivatives (e.g. Amazon Linux) that drift away from
+  their parent.
+- _Some package is installed from source_. This means that RStudio has no
+  binary version for that package.
+
+There is nothing _we_ can do from `rspm` in either case, so please **do not**
+file issues about them. Unfortunately, the best _you_ can do is to install the
+development packages for the required library and force a source installation
+(i.e. _business as usual_).
 
 ## Disclaimer
 
