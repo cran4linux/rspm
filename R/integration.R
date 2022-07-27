@@ -68,10 +68,12 @@ opt <- new.env(parent=emptyenv())
 os <- function() {
   os <- utils::read.table("/etc/os-release", sep="=", col.names=c("var", "val"),
                           stringsAsFactors=FALSE)
+  os <- stats::setNames(as.list(os$val), os$var)
   code <- switch(
-    id <- subset(os, os$var == "ID")$val,
-    "ubuntu" = subset(os, os$var == "VERSION_CODENAME")$val,
-    "centos" = paste0(id, subset(os, os$var == "VERSION_ID")$val),
+    id <- os$ID,
+    "ubuntu" = os$VERSION_CODENAME,
+    "centos" = paste0(id, os$VERSION_ID),
+    "rhel"   = paste0("centos", substr(os$VERSION_ID, 1, 1)),
     stop("OS not supported", call.=FALSE)
   )
   list(id = id, code = code)
