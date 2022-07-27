@@ -46,7 +46,7 @@ jobs:
       env:
         _R_CHECK_CRAN_INCOMING_REMOTE_: false
       run: |
-        export LANG=$(locale -a | grep utf8)
+        export LANG=$(locale -a | grep utf8 | head -n1)
         Rscript -e 'install.packages("tinytest", repos="https://cran.r-project.org")'
         R CMD build . && mkdir check
         R CMD check rspm_*.tar.gz --no-manual -o check
