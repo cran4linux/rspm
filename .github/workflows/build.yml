@@ -5,31 +5,38 @@ jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     runs-on: ubuntu-latest
-    name: ${{ matrix.config.distro }}:${{ matrix.config.version }}
+    name: ${{ matrix.config.image }}:${{ matrix.config.tag }}
     container:
-      image: ${{ matrix.config.distro }}:${{ matrix.config.version }}
+      image: ${{ matrix.config.repo }}${{ matrix.config.image }}:${{ matrix.config.tag }}
 
     strategy:
       fail-fast: false
       matrix:
         config:
-        - {distro: 'quay.io/centos/centos', version: 'stream8'}
-        - {distro: 'ubuntu', version: '18.04'}
-        - {distro: 'ubuntu', version: '20.04'}
-        - {distro: 'ubuntu', version: '22.04'}
+        - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos/'}
+        - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos/'}
+        - {image: 'ubuntu', tag: '18.04',   repo: ''}
+        - {image: 'ubuntu', tag: '20.04',   repo: ''}
+        - {image: 'ubuntu', tag: '22.04',   repo: ''}
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install dependencies (CentOS)
-      if: ${{ matrix.config.version == 'stream8' }}
+    - name: Install dependencies (CentOS 7)
+      if: ${{ matrix.config.tag == 'centos7' }}
+      run: |
+        yum install -y epel-release
+        yum install -y R-core
+
+    - name: Install dependencies (CentOS 8)
+      if: ${{ matrix.config.tag == 'stream8' }}
       run: |
         dnf config-manager --set-enabled powertools
         dnf install -y epel-release epel-next-release
         dnf install -y R-core
 
     - name: Install dependencies (Ubuntu)
-      if: ${{ matrix.config.distro == 'ubuntu' }}
+      if: ${{ matrix.config.image == 'ubuntu' }}
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -37,9 +44,9 @@ jobs:
 
     - name: Check
       env:
-        LANG: C.UTF-8
         _R_CHECK_CRAN_INCOMING_REMOTE_: false
       run: |
+        export LANG=$(locale -a | grep utf8 | head -n1)
         Rscript -e 'install.packages("tinytest", repos="https://cran.r-project.org")'
         R CMD build . && mkdir check
         R CMD check rspm_*.tar.gz --no-manual -o check
@@ -48,5 +55,5 @@ jobs:
       if: ${{ failure() }}
       uses: actions/upload-artifact@master
       with:
-        name: r-${{ matrix.config.distro }}-${{ matrix.config.version }}-results
+        name: r-${{ matrix.config.image }}-${{ matrix.config.tag }}-results
         path: check
