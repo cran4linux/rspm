@@ -3,12 +3,9 @@
 \name{manager}
 \alias{manager}
 \alias{install_sysreqs}
-\alias{set_rpath}
 \title{Manage System Requirements}
 \usage{
 install_sysreqs()
-
-set_rpath()
 }
 \description{
 Functions to install and configure system requirements.

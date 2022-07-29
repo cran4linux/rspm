@@ -41,28 +41,18 @@ disable <- function() {
   invisible()
 }
 
-#' @name integration
-#' @export
+url <- "https://packagemanager.rstudio.com/all/__linux__/%s/latest"
+opt <- new.env(parent=emptyenv())
+
 enable_repo <- function() {
   opt$repos <- getOption("repos")
   options(repos = c(RSPM = sprintf(url, os()$code)))
 }
 
-#' @name integration
-#' @export
 disable_repo <- function() {
   if (!is.null(opt$repos))
     options(repos = opt$repos)
   opt$repos <- NULL
-}
-
-url <- "https://packagemanager.rstudio.com/all/__linux__/%s/latest"
-opt <- new.env(parent=emptyenv())
-
-.onLoad <- function(libname, pkgname) {
-  options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(
-    getRversion(), R.version["platform"], R.version["arch"], R.version["os"])))
-  dir.create(user_dir(), showWarnings=FALSE, recursive=TRUE, mode="0755")
 }
 
 os <- function() {
@@ -84,6 +74,8 @@ os <- function() {
   list(id = id, code = code)
 }
 
-user_dir <- function(path="") {
-  file.path(normalizePath("~"), ".local/share/R/rspm", path)
+.onLoad <- function(libname, pkgname) {
+  options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(
+    getRversion(), R.version["platform"], R.version["arch"], R.version["os"])))
+  dir.create(user_dir(), showWarnings=FALSE, recursive=TRUE, mode="0755")
 }

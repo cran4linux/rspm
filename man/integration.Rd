@@ -4,17 +4,11 @@
 \alias{integration}
 \alias{enable}
 \alias{disable}
-\alias{enable_repo}
-\alias{disable_repo}
 \title{Enable/Disable RStudio Package Manager}
 \usage{
 enable()
 
 disable()
-
-enable_repo()
-
-disable_repo()
 }
 \description{
 Functions to enable or disable the integration of \code{\link{install_sysreqs}}
