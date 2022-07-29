@@ -14,7 +14,7 @@ Description: Enables binary package installations on Linux distributions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 OS_type: unix
-Suggests: tinytest
+Suggests: renv, tinytest
 URL: https://enchufa2.github.io/rspm
 BugReports: https://github.com/Enchufa2/rspm/issues
 RoxygenNote: 7.2.0

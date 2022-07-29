@@ -1,8 +1,8 @@
 #' Manage System Requirements
 #'
-#' Functions to install and configure system requirements.
-#'
-#' @seealso \code{\link{integration}}
+#' Detect, install and configure system requirements. This function is
+#' automatically called when the package is enabled via \code{\link{enable}}.
+#' It can also be called manually at any time to update the system requirements.
 #'
 #' @name manager
 #' @export

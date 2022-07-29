@@ -1,16 +1,17 @@
 #' Enable/Disable RStudio Package Manager
 #'
-#' Functions to enable or disable the integration of \code{\link{install_sysreqs}}
-#' into \code{\link{install.packages}}. When enabled, binary packages are
-#' installed from RSPM if available, and system requirements are transparently
-#' resolved and installed without root privileges.
+#' Functions to enable or disable RSPM repos as well as the integration of
+#' \code{\link{install_sysreqs}} into \code{install.packages} and
+#' \code{update.packages}. When enabled, binary packages are installed from
+#' RSPM if available, and system requirements are transparently resolved and
+#' installed without root privileges.
 #'
-#' @details To enable \pkg{rspm} system-wide by default, include the following:
+#' @details To enable \pkg{rspm} permanently, include the following into your
+#' \code{.Rprofile}:
 #'
 #' \code{suppressMessages(rspm::enable())}
 #'
-#' into the \code{Rprofile.site} file. To enable it just for a particular user,
-#' move that line to the user's \code{~/.Rprofile} instead.
+#' @seealso \code{\link{renv_init}} for \pkg{renv} projects.
 #'
 #' @examples
 #' \dontrun{
@@ -29,7 +30,8 @@ enable <- function() {
   check_requirements()
   enable_repo()
   expr <- quote(get("install_sysreqs", asNamespace("rspm"))())
-  trace(utils::install.packages, exit=expr, print=FALSE)
+  trace(install.packages, exit=expr, print=FALSE)
+  trace(update.packages, exit=expr, print=FALSE)
   invisible()
 }
 
@@ -37,7 +39,8 @@ enable <- function() {
 #' @export
 disable <- function() {
   disable_repo()
-  untrace(utils::install.packages)
+  untrace(install.packages)
+  untrace(update.packages)
   invisible()
 }
 

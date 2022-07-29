@@ -3,3 +3,4 @@
 export(disable)
 export(enable)
 export(install_sysreqs)
+export(renv_init)
