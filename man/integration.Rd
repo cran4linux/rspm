@@ -4,31 +4,24 @@
 \alias{integration}
 \alias{enable}
 \alias{disable}
-\alias{enable_repo}
-\alias{disable_repo}
 \title{Enable/Disable RStudio Package Manager}
 \usage{
 enable()
 
 disable()
-
-enable_repo()
-
-disable_repo()
 }
 \description{
-Functions to enable or disable the integration of \code{\link{install_sysreqs}}
-into \code{\link{install.packages}}. When enabled, binary packages are
-installed from RSPM if available, and system requirements are transparently
-resolved and installed without root privileges.
+Functions to enable or disable RSPM repos as well as the integration of
+\code{\link{install_sysreqs}} into \code{install.packages} and
+\code{update.packages}. When enabled, binary packages are installed from
+RSPM if available, and system requirements are transparently resolved and
+installed without root privileges.
 }
 \details{
-To enable \pkg{rspm} system-wide by default, include the following:
+To enable \pkg{rspm} permanently, include the following into your
+\code{.Rprofile}:
 
 \code{suppressMessages(rspm::enable())}
-
-into the \code{Rprofile.site} file. To enable it just for a particular user,
-move that line to the user's \code{~/.Rprofile} instead.
 }
 \examples{
 \dontrun{
@@ -41,4 +34,7 @@ rspm::disable()
 install.packages("errors")
 }
 
+}
+\seealso{
+\code{\link{renv_init}} for \pkg{renv} projects.
 }

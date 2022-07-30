@@ -34,7 +34,7 @@ configured.
 
 ![](https://github.com/Enchufa2/rspm/blob/main/docs/assets/rspm_units.gif?raw=true)
 
-## Installation
+## Installation and usage
 
 You can install it directly from GitHub using the `remotes` package:
 
@@ -42,13 +42,43 @@ You can install it directly from GitHub using the `remotes` package:
 remotes::install_github("Enchufa2/rspm")
 ```
 
-To enable it by default, put the following into your `.Rprofile`:
+### Basic usage
 
-```
-rspm::enable() # wrap it in suppressMessages() to avoid the initial message
+You just need to enable it once for your session, and then you can install or
+update packages normally via `install.packages` or `update.packages`.
+
+```r
+rspm::enable()
+install.packages("units")
 ```
 
-Then, run `install.packages` as usual, and `rspm` will take care of the rest.
+Packages with system requirements, like the one above, will be scanned and
+configured automatically. Typically, everything will just work without any
+further action. But if something gets misconfigured for some reason, it is
+possible to manually trigger a reconfiguration with the following command:
+
+```r
+rspm::install_sysreqs()
+```
+
+To enable it by default for all sessions, put the following into your `.Rprofile`:
+
+```r
+rspm::enable() # wrap it in suppressMessages() to suppress the initial message
+```
+
+### {renv} projects
+
+To initialize an `renv` project with `rspm` support, just run the following:
+
+```r
+rspm::renv_init()
+```
+
+This command runs `renv::init()` for you and then installs the infrastructure
+required for the integration with `install.packages` and `update.packages`.
+Note that, if `renv::install` or `renv::update` are called directly, then
+`rspm::install_sysreqs()` needs to be called manually.
 
 ## Technical details
 
