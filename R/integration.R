@@ -44,6 +44,7 @@ disable <- function() {
   invisible()
 }
 
+globalVariables(c("install.packages", "update.packages"))
 url <- "https://packagemanager.rstudio.com/all/__linux__/%s/latest"
 opt <- new.env(parent=emptyenv())
 
