@@ -4,7 +4,10 @@
 \alias{renv_init}
 \title{Initialize an \pkg{renv} Project}
 \usage{
-renv_init()
+renv_init(...)
+}
+\arguments{
+\item{...}{Arguments to be passed to \code{renv::init()}.}
 }
 \description{
 Substitutes \code{renv::init()} to initialize a new \pkg{renv} project with

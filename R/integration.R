@@ -48,7 +48,8 @@ url <- "https://packagemanager.rstudio.com/all/__linux__/%s/latest"
 opt <- new.env(parent=emptyenv())
 
 enable_repo <- function() {
-  opt$repos <- getOption("repos")
+  if (is.null(opt$repos))
+    opt$repos <- getOption("repos")
   options(repos = c(RSPM = sprintf(url, os()$code)))
 }
 
