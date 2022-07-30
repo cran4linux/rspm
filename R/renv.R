@@ -12,9 +12,14 @@
 renv_init <- function() {
   if (!requireNamespace("renv", quietly=TRUE))
     stop("please install 'renv' for this functionality", call.=FALSE)
+
   project <- renv::init()
-  source <- system.file("resources/activate.R", package="rspm")
+  file.copy(system.file(package="rspm"), renv::paths$library(), recursive=TRUE)
+
+  source <- readLines(system.file("resources/activate.R", package="rspm"))
+  source <- gsub("VERSION", utils::packageVersion("rspm"), source)
   target <- file.path(project, "renv/activate.R")
-  cat("", readLines(source), "", file=target, sep="\n", append=TRUE)
+  cat("", source, "", file=target, sep="\n", append=TRUE)
+
   invisible(project)
 }
