@@ -14,5 +14,6 @@ install.packages("units")
 expect_true(requireNamespace("units", quietly=TRUE))
 
 # cleanup
+disable()
 remove.packages("units")
 unlink(Sys.glob(rspm:::user_dir("*")), recursive=TRUE, force=TRUE)
