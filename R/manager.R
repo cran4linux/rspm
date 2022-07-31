@@ -10,8 +10,7 @@ install_sysreqs <- function() {
   cat("Inspecting installed packages...\n")
 
   # get missing libraries
-  libs <- list.files(.libPaths()[1], "\\.so$", full.names=TRUE, recursive=TRUE)
-  if (!length(libs <- ldd_missing(libs)))
+  if (!length(libs <- ldd_missing()))
     return(invisible())
 
   # install sysreqs and update rpath
@@ -19,21 +18,25 @@ install_sysreqs <- function() {
   set_rpath()
 }
 
-ldd_missing <- function(x) {
+ldd_missing <- function(lib.loc = NULL) {
+  lib.loc <- user_lib(lib.loc)
   ldd <- check_requirements("ldd")
-  libs <- system_(ldd, p(x), "2>&1")
+
+  libs <- list.files(lib.loc, "\\.so$", full.names=TRUE, recursive=TRUE)
+  libs <- system_(ldd, p(libs), "2>&1")
   libs <- grep("not found", libs, value=TRUE)
   libs <- sapply(strsplit(trimws(libs), " => "), "[", 1)
   libs
 }
 
-set_rpath <- function() {
+set_rpath <- function(lib.loc = NULL) {
+  lib.loc <- user_lib(lib.loc)
   patchelf <- check_requirements("patchelf")
   cat("Configuring sysreqs...\n")
 
   slibs <- list.files(user_dir("usr"), "\\.so", full.names=TRUE, recursive=TRUE)
   slibs <- slibs[!is.na(file.info(slibs)$size)]
-  rlibs <- list.files(.libPaths()[1], "\\.so$", full.names=TRUE, recursive=TRUE)
+  rlibs <- list.files(lib.loc, "\\.so$", full.names=TRUE, recursive=TRUE)
   alibs <- c(rlibs, slibs)
   alibs <- alibs[!alibs %in% sapply(getLoadedDLLs(), "[[", "path")]
   rpath <- paste(unique(dirname(slibs)), collapse=":")

@@ -6,6 +6,12 @@ user_dir <- function(path="") {
   file.path(normalizePath("~"), ".local/share/R/rspm", path)
 }
 
+user_lib <- function(lib.loc = NULL) {
+  if (is.null(lib.loc))
+    lib.loc <- .libPaths()[1]
+  lib.loc
+}
+
 check_requirements <- function(cmd) {
   preqs <- get(paste0(os()$id, "_requirements"), asNamespace("rspm"))
   preqs <- Sys.which(preqs)
