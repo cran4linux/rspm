@@ -13,7 +13,7 @@ distributions are CentOS / RHEL 7 and 8, and several RHEL derivatives
 openSUSE / SLES 15.3, and Ubuntu 18.04, 20.04 and 22.04.
 }
 \references{
-\url{https://enchufa2.github.io/rspm}
+\url{https://enchufa2.github.io/rspm/}
 }
 \seealso{
 \code{\link{manager}}, \code{\link{integration}}

@@ -22,7 +22,7 @@
 Both R packages and system dependencies **are installed into the user home**.
 For lightning-fast system-based installations (which have other advantages,
 such as multitenancy, reversibility and automatic updates, still without root
-privileges), see the [bspm](https://enchufa2.github.io/bspm) package and
+privileges), see the [bspm](https://enchufa2.github.io/bspm/) package and
 projects such as [cran2copr](https://github.com/Enchufa2/cran2copr) for Fedora
 or [r2u](https://github.com/eddelbuettel/r2u) for Ubuntu.
 
@@ -94,7 +94,7 @@ OBS repo for OpenSUSE, the
 Fedora, the [ArchRPkgs](https://github.com/dvdesolve/ArchRPkgs) repo for Arch
 and the [r2u](https://github.com/eddelbuettel/r2u) repo again for Ubuntu.
 These are tightly integrated and can be fully managed without leaving the R
-console thanks to the [bspm](https://enchufa2.github.io/bspm) package.
+console thanks to the [bspm](https://enchufa2.github.io/bspm/) package.
 See [this paper](https://arxiv.org/abs/2103.08069) for a detailed review.
 
 On the other hand, RStudio recently took a complementary approach by building
