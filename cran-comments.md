@@ -1,4 +1,6 @@
-## New submission
+## New submission (resubmission)
+Single quote software names in the Description and Title fields.
+
 Enables binary package installations from RStudio's RSPM on Linux distributions
 and provides automatic management of system requirements.
 
