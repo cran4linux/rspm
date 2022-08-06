@@ -1,3 +1,7 @@
+# rspm 0.2.1
+
+- Fix .Rprofile enabling error (#8).
+
 # rspm 0.2.0
 
 - Add support for CentOS 7, RHEL 7 and 8 (#1).

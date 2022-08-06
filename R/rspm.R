@@ -1,7 +1,7 @@
 #' \pkg{rspm}: RStudio Package Manager
 #'
 #' Enables binary package installations on Linux distributions.
-#' Provides access to RStudio's public repos, and transparent management of
+#' Provides access to RStudio public repos, and transparent management of
 #' system requirements without administrative privileges. Currently supported
 #' distributions are CentOS / RHEL 7 and 8, and several RHEL derivatives
 #' (Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2),

@@ -30,8 +30,14 @@ enable <- function() {
   check_requirements()
   enable_repo()
   expr <- quote(get("install_sysreqs", asNamespace("rspm"))())
-  trace(install.packages, exit=expr, print=FALSE)
-  trace(update.packages, exit=expr, print=FALSE)
+  opt$utils <- !exists("install.packages")
+  if (opt$utils) {
+    trace(utils::install.packages, exit=expr, print=FALSE)
+    trace(utils::update.packages, exit=expr, print=FALSE)
+  } else {
+    trace(install.packages, exit=expr, print=FALSE)
+    trace(update.packages, exit=expr, print=FALSE)
+  }
   invisible()
 }
 
@@ -39,8 +45,13 @@ enable <- function() {
 #' @export
 disable <- function() {
   disable_repo()
-  untrace(install.packages)
-  untrace(update.packages)
+  if (isTRUE(opt$utils)) {
+    untrace(utils::install.packages)
+    untrace(utils::update.packages)
+  } else {
+    untrace(install.packages)
+    untrace(update.packages)
+  }
   invisible()
 }
 
