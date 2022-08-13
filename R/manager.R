@@ -4,6 +4,16 @@
 #' automatically called when the package is enabled via \code{\link{enable}}.
 #' It can also be called manually at any time to update the system requirements.
 #'
+#' @return No return value, called for side effects.
+#'
+#' @examples
+#' \dontrun{
+#' # install 'units' without enabling the integration
+#' install.packages("units")
+#' # then trigger the installation of system requirements manually
+#' rspm::install_sysreqs()
+#' }
+#'
 #' @name manager
 #' @export
 install_sysreqs <- function() {

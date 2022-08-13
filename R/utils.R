@@ -3,7 +3,7 @@ system <- function(...) base::system(p(...), intern=FALSE)
 system_ <- function(...) suppressWarnings(base::system(p(...), intern=TRUE))
 
 user_dir <- function(path="") {
-  file.path(normalizePath("~"), ".local/share/R/rspm", path)
+  file.path(tools::R_user_dir("rspm"), path)
 }
 
 user_lib <- function(lib.loc = NULL) {

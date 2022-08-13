@@ -70,11 +70,34 @@ activate the integration. Then, packages can be installed normally via
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
+
+<p>The project directory, invisibly. This function is called for its
+side effects.</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Note that, if <code><a href="https://rstudio.github.io/renv/reference/install.html" class="external-link">renv::install</a></code> or <code><a href="https://rstudio.github.io/renv/reference/update.html" class="external-link">renv::update</a></code> are called
 directly, then <code><a href="manager.html">rspm::install_sysreqs()</a></code> needs to be called manually.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># initialize a new project (with an empty R library)</span></span></span>
+<span class="r-in"><span><span class="fu">rspm</span><span class="fu">::</span><span class="fu">renv_init</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># install 'units' and all its dependencies from the system repos</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"units"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># install a specific version and install dependencies manually</span></span></span>
+<span class="r-in"><span><span class="fu">renv</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/renv/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"units@0.8-0"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">rspm</span><span class="fu">::</span><span class="fu"><a href="manager.html">install_sysreqs</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

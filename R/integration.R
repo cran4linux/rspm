@@ -6,6 +6,8 @@
 #' RSPM if available, and system requirements are transparently resolved and
 #' installed without root privileges.
 #'
+#' @return No return value, called for side effects.
+#'
 #' @details To enable \pkg{rspm} permanently, include the following into your
 #' \code{.Rprofile}:
 #'

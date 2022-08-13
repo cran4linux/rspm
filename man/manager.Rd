@@ -7,8 +7,20 @@
 \usage{
 install_sysreqs()
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Detect, install and configure system requirements. This function is
 automatically called when the package is enabled via \code{\link{enable}}.
 It can also be called manually at any time to update the system requirements.
+}
+\examples{
+\dontrun{
+# install 'units' without enabling the integration
+install.packages("units")
+# then trigger the installation of system requirements manually
+rspm::install_sysreqs()
+}
+
 }

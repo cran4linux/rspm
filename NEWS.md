@@ -1,6 +1,7 @@
 # rspm 0.2.1
 
 - Fix .Rprofile enabling error (#8).
+- Some fixes requested by CRAN.
 
 # rspm 0.2.0
 

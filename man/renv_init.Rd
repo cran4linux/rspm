@@ -9,6 +9,10 @@ renv_init(...)
 \arguments{
 \item{...}{Arguments to be passed to \code{renv::init()}.}
 }
+\value{
+The project directory, invisibly. This function is called for its
+side effects.
+}
 \description{
 Substitutes \code{renv::init()} to initialize a new \pkg{renv} project with
 \pkg{rspm} enabled. This function sets the appropriate infrastructure to
@@ -18,4 +22,18 @@ activate the integration. Then, packages can be installed normally via
 \details{
 Note that, if \code{renv::install} or \code{renv::update} are called
 directly, then \code{rspm::install_sysreqs()} needs to be called manually.
+}
+\examples{
+\dontrun{
+# initialize a new project (with an empty R library)
+rspm::renv_init()
+
+# install 'units' and all its dependencies from the system repos
+install.packages("units")
+
+# install a specific version and install dependencies manually
+renv::install("units@0.8-0")
+rspm::install_sysreqs()
+}
+
 }

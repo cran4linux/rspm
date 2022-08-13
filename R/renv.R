@@ -7,8 +7,24 @@
 #'
 #' @param ... Arguments to be passed to \code{renv::init()}.
 #'
+#' @return The project directory, invisibly. This function is called for its
+#' side effects.
+#'
 #' @details Note that, if \code{renv::install} or \code{renv::update} are called
 #' directly, then \code{rspm::install_sysreqs()} needs to be called manually.
+#'
+#' @examples
+#' \dontrun{
+#' # initialize a new project (with an empty R library)
+#' rspm::renv_init()
+#'
+#' # install 'units' and all its dependencies from the system repos
+#' install.packages("units")
+#'
+#' # install a specific version and install dependencies manually
+#' renv::install("units@0.8-0")
+#' rspm::install_sysreqs()
+#' }
 #'
 #' @export
 renv_init <- function(...) {

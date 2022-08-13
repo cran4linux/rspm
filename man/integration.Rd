@@ -10,6 +10,9 @@ enable()
 
 disable()
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Functions to enable or disable RSPM repos as well as the integration of
 \code{\link{install_sysreqs}} into \code{install.packages} and
