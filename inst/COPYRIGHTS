@@ -1,0 +1,7 @@
+Files: *
+Copyright: see file LICENSE
+License: MIT
+
+File: R/userdir.R
+Copyright: 2020 R Core Team
+License: GPL-2+

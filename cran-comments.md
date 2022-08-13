@@ -17,7 +17,7 @@ Fixes in this resubmission:
   indicated in the documentation.
 - The package requires storing user-specific data in the proper place in the
   user directory. Now, this is done by calling tools::R_user_dir(), as specified
-  in the CRAN policies.
+  in the CRAN policies (backported for R < 4.0).
 
 ## Test environments
 - ubuntu:22.04, centos:stream8 on GitHub
