@@ -15,7 +15,7 @@ centos_install_sysreqs <- function(libs) {
 }
 
 centos_cmd <- function() {
-  cmd <- "yum install --downloadonly --downloaddir=."
+  cmd <- "yumdownloader --resolve"
   if (Sys.which("dnf") != "")
     cmd <- "dnf download --resolve"
   cmd

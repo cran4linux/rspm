@@ -1,3 +1,7 @@
+# rspm 0.2.2
+
+- Fix root permission requirement for yum-based systems (#9).
+
 # rspm 0.2.1
 
 - Fix .Rprofile enabling error (#8).
