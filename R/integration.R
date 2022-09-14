@@ -95,5 +95,17 @@ os <- function() {
 .onLoad <- function(libname, pkgname) {
   options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(
     getRversion(), R.version["platform"], R.version["arch"], R.version["os"])))
+
+  if (is.na(path <- Sys.getenv("RSPM_USER_DIR", unset=NA)))
+    path <- user_dir()
+  opt$user_dir <- path
   dir.create(user_dir(), showWarnings=FALSE, recursive=TRUE, mode="0755")
+
+  reg.finalizer(opt, onexit=TRUE, function(opt) {
+    path <- opt$user_dir
+    while (length(setdiff(dir(path, all.files=TRUE), c(".", ".."))) == 0) {
+      unlink(path, recursive=TRUE, force=TRUE)
+      path <- dirname(path)
+    }
+  })
 }

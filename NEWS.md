@@ -1,6 +1,7 @@
 # rspm 0.2.2
 
 - Fix root permission requirement for yum-based systems (#9).
+- Clean up empty user directory.
 
 # rspm 0.2.1
 

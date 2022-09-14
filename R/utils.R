@@ -3,10 +3,14 @@ system <- function(...) base::system(p(...), intern=FALSE)
 system_ <- function(...) suppressWarnings(base::system(p(...), intern=TRUE))
 
 user_dir <- function(path="") {
-  tenv <- asNamespace("tools")
-  if (exists("R_user_dir", tenv))
-    R_user_dir <- get("R_user_dir", tenv)
-  file.path(R_user_dir("rspm"), path)
+  user_dir <- opt$user_dir
+  if (is.null(user_dir)) {
+    tenv <- asNamespace("tools")
+    if (exists("R_user_dir", tenv))
+      R_user_dir <- get("R_user_dir", tenv)
+    user_dir <- R_user_dir("rspm")
+  }
+  file.path(user_dir, path)
 }
 
 user_lib <- function(lib.loc = NULL) {
