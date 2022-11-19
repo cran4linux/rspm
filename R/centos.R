@@ -5,7 +5,7 @@ centos_install <- function(pkgs) {
   old <- setwd(temp)
   on.exit(setwd(old))
   system(centos_cmd(), p(pkgs))
-  uid <- as.integer(base::system("id -u", intern = TRUE))
+  uid <- as.integer(system_("id -u"))
   if (uid != 0) {
     # non-root
     rpm_list <- list.files(pattern = ".rpm")
