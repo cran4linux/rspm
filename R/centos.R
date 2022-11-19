@@ -26,7 +26,7 @@ check_centos_nonroot_reqs <- function() {
       "RPM packages into home directory without admin (sudo) rights.",
       "Quit current R session. Then install missing in shell with \n",
       p("`sudo dnf install", paste0(missing, "`.")), "\n",
-      "Restart R and run `rspm::enable()` again to proceed the installation
+      "Restart R and run `rspm::enable()` again to proceed installing
       the desired R package via `install.packages()`.",
       call. = FALSE
     )
