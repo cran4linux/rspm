@@ -6,7 +6,7 @@ centos_install <- function(pkgs) {
   on.exit(setwd(old))
   system(centos_cmd(), p(pkgs))
   uid <- as.integer(system_("id -u"))
-  if (uid != 0L) centos_install_nontroot() else centos_install_root()
+  if (uid != 0L) centos_install_nonroot() else centos_install_root()
 }
 
 centos_install_nonroot <- function() {
