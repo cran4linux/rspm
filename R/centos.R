@@ -11,13 +11,13 @@ centos_install <- function(pkgs) {
 
 centos_install_nonroot <- function() {
   rpm_list <- list.files(pattern = ".rpm")
-  assert_centos_nonroot_extras()
+  check_centos_nonroot_reqs()
   for (rpm in rpm_list) {
     system("rpm2cpio", rpm, "| cpio", "--directory", user_dir(), "-id")
   }
 }
 
-assert_centos_nonroot_extras <- function() {
+check_centos_nonroot_reqs <- function() {
   reqs <- c("rpm2cpio", "cpio")
   reqs <- Sys.which(reqs)
   idx <- reqs == ""
@@ -25,7 +25,7 @@ assert_centos_nonroot_extras <- function() {
     stop("Non-root requires 'rpm2cpio' and 'cpio' tools to unpack and copy ",
       "RPM packages into home directory without admin (sudo) rights.",
       "Quit current R session. Then install missing in shell with \n",
-      p("`sudo dnf install", paste0(missing, "`")), "\n",
+      p("`sudo dnf install", paste0(missing, "`.")), "\n",
       "Restart R and run `rspm::enable()` again to proceed.",
       call. = FALSE
     )
