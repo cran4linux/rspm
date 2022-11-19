@@ -5,7 +5,8 @@ centos_install <- function(pkgs) {
   old <- setwd(temp)
   on.exit(setwd(old))
   system(centos_cmd(), p(pkgs))
-  if (system("id -u") != 0) {
+  uid <- as.integer(base::system("id -u", intern = TRUE))
+  if (uid != 0) {
     rpm_list <- list.files(pattern = ".rpm")
     for (rpm in rpm_list) {
       system("rpm2cpio", rpm, "| cpio", "--directory", user_dir(), "-id")
