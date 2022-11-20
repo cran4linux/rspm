@@ -4,9 +4,20 @@ ubuntu_install <- function(pkgs) {
   system("apt-get", ubuntu_options(), "update")
   system("apt-get", ubuntu_options(), "-y -d install", p(pkgs))
   debs <- user_dir("var/cache/apt/archives/*.deb")
+  ver <- strsplit(system_("dpkg --version"), " ")[[1]][7]
+  if (package_version(ver) >= "1.21")
+    ubuntu_install_modern(debs) else ubuntu_install_old(debs)
+  unlink(Sys.glob(debs))
+}
+
+ubuntu_install_modern <- function(debs) {
   system("dpkg --unpack --force-not-root --force-script-chrootless",
          "--instdir", user_dir(), debs)
-  unlink(debs)
+}
+
+ubuntu_install_old <- function(debs) {
+  for (file in Sys.glob(debs))
+    system("dpkg-deb -x", file, user_dir())
 }
 
 ubuntu_install_sysreqs <- function(libs) {

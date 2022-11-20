@@ -7,15 +7,15 @@ centos_install <- function(pkgs) {
   system(centos_cmd(), p(pkgs))
   ver <- tail(strsplit(system_("rpm --version"), " ")[[1]], 1)
   if (package_version(ver) >= "4.16")
-    centos_install_chroot() else centos_install_nochroot()
+    centos_install_modern() else centos_install_old()
 }
 
-centos_install_chroot <- function() {
+centos_install_modern <- function() {
   system("rpm -i --nodeps --noscripts --notriggers --nosignature --excludedocs",
          "-r", user_dir(), "*.rpm")
 }
 
-centos_install_nochroot <- function() {
+centos_install_old <- function() {
   for (file in list.files(pattern=".rpm$"))
     system("cat", file, "| rpm2archive - | tar xfz - -C", user_dir())
 }
