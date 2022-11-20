@@ -1,4 +1,4 @@
-sles_requirements <- c()
+sles_requirements <- opensuse_requirements
 
 sles_install <- function(pkgs) opensuse_install(pkgs)
 
