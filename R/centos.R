@@ -5,9 +5,12 @@ centos_install <- function(pkgs) {
   old <- setwd(temp)
   on.exit(setwd(old))
   system(centos_cmd(), p(pkgs))
-  ver <- tail(strsplit(system_("rpm --version"), " ")[[1]], 1)
+  ver <- strsplit(system_("rpm --version"), " ")[[1]][3]
   if (package_version(ver) >= "4.16")
-    centos_install_modern() else centos_install_old()
+    centos_install_modern()
+  else if (package_version(ver) >= "4.12")
+    centos_install_old()
+  else centos_install_old_old()
 }
 
 centos_install_modern <- function() {
@@ -18,6 +21,11 @@ centos_install_modern <- function() {
 centos_install_old <- function() {
   for (file in list.files(pattern=".rpm$"))
     system("cat", file, "| rpm2archive - | tar xfz - -C", user_dir())
+}
+
+centos_install_old_old <- function() {
+  for (file in list.files(pattern=".rpm$"))
+    system("rpm2cpio", file, "| (cd", user_dir(), "; cpio -dium --quiet)")
 }
 
 centos_install_sysreqs <- function(libs) {
