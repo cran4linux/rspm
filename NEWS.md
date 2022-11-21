@@ -1,3 +1,7 @@
+# rspm 0.2.3
+
+- Fix non-root unpacking for old rpm/dpkg versions (#11 addressing #9, #10).
+
 # rspm 0.2.2
 
 - Fix root permission requirement for yum-based systems (#9).

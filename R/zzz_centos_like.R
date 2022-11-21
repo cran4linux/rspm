@@ -1,8 +1,8 @@
-rhel_requirements <- c()
-amzn_requirements <- c()
-rocky_requirements <- c()
-almalinux_requirements <- c()
-ol_requirements <- c()
+rhel_requirements <- centos_requirements
+amzn_requirements <- centos_requirements
+rocky_requirements <- centos_requirements
+almalinux_requirements <- centos_requirements
+ol_requirements <- centos_requirements
 
 rhel_install <- function(pkgs) centos_install(pkgs)
 amzn_install <- function(pkgs) centos_install(pkgs)
