@@ -1,5 +1,4 @@
 ## Patch release
-- Fixes non-root unpacking for old rpm/dpkg versions
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04, ubuntu:18.04 on GitHub
