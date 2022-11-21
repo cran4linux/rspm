@@ -147,6 +147,6 @@ development packages for the required library and force a source installation
 
 ## Disclaimer
 
-_RStudio_ is a registered trademark of [RStudio, PBC](https://www.rstudio.com/).
+_RStudio_ is a registered trademark of [Posit](https://posit.co/).
 This software provides access to a public repository maintained by RStudio and
 provided to the open-source community for free, but has no association with it.
