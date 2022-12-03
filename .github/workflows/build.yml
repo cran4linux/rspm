@@ -15,6 +15,7 @@ jobs:
         config:
         - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos/'}
         - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos/'}
+        - {image: 'centos', tag: 'stream9', repo: 'quay.io/centos/'}
         - {image: 'ubuntu', tag: '18.04',   repo: ''}
         - {image: 'ubuntu', tag: '20.04',   repo: ''}
         - {image: 'ubuntu', tag: '22.04',   repo: ''}
@@ -33,6 +34,14 @@ jobs:
       if: ${{ matrix.config.tag == 'stream8' }}
       run: |
         dnf config-manager --set-enabled powertools
+        dnf install -y epel-release epel-next-release
+        dnf install -y R-core
+
+    - name: Install dependencies (CentOS 9)
+      if: ${{ matrix.config.tag == 'stream9' }}
+      run: |
+        dnf install -y 'dnf-command(config-manager)'
+        dnf config-manager --set-enabled crb
         dnf install -y epel-release epel-next-release
         dnf install -y R-core
 
