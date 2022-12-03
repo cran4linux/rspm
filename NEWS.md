@@ -1,3 +1,7 @@
+# rspm 0.3.0
+
+- Add support for CentOS/RHEL 9 and derivatives (#13 addressing #12).
+
 # rspm 0.2.3
 
 - Fix non-root unpacking for old rpm/dpkg versions (#11 addressing #9, #10).
