@@ -80,9 +80,9 @@ os <- function() {
   code <- switch(
     id <- strsplit(os$ID, "-")[[1]][1],
     "ubuntu" = os$VERSION_CODENAME,
-    "centos" = paste0(id, os$VERSION_ID),
-    "rocky"  = , "almalinux" = , "ol" = ,
-    "rhel"   = paste0("centos", strsplit(os$VERSION_ID, "\\.")[[1]][1]),
+    "centos" = , "rocky"  = , "almalinux" = , "ol" = , "rhel" =
+      paste0(if ((ver <- package_version(os$VERSION_ID)$major) < 9)
+        "centos" else "rhel", ver),
     "amzn"   = if (os$VERSION_ID == "2") "centos7" else
       stop("OS not supported", call.=FALSE),
     "sles"   = , "opensuse" =
