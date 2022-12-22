@@ -22,7 +22,7 @@ jobs:
         #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Install dependencies (CentOS 7)
       if: ${{ matrix.config.tag == 'centos7' }}
