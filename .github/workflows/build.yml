@@ -16,14 +16,13 @@ jobs:
         - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos/'}
         - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos/'}
         - {image: 'centos', tag: 'stream9', repo: 'quay.io/centos/'}
-        - {image: 'ubuntu', tag: '18.04',   repo: ''}
-        - {image: 'ubuntu', tag: '20.04',   repo: ''}
-        - {image: 'ubuntu', tag: '22.04',   repo: ''}
+        - {image: 'ubuntu', tag: '18.04',   repo: 'rocker/r-'}
+        - {image: 'ubuntu', tag: '20.04',   repo: 'rocker/r-'}
+        - {image: 'ubuntu', tag: '22.04',   repo: 'rocker/r-'}
         #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
+        #- {image: 'leap',   tag: '15.4',    repo: 'opensuse/'}
 
     steps:
-    - uses: actions/checkout@v3
-
     - name: Install dependencies (CentOS 7)
       if: ${{ matrix.config.tag == 'centos7' }}
       run: |
@@ -50,14 +49,15 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        apt update && apt install -y r-base-core apt-file
+        apt update && apt install -y apt-file
 
     - name: Install dependencies (openSUSE)
       if: ${{ matrix.config.image == 'leap' }}
       run: |
-        zypper addrepo https://download.opensuse.org/repositories/Education/15.3/Education.repo
-        zypper --gpg-auto-import-keys refresh
-        zypper install -y R-base-devel gcc-c++ udunits2-devel # binary not provided :(
+        zypper addrepo https://download.opensuse.org/repositories/Education/${{ matrix.config.tag }}/Education.repo
+        zypper --no-gpg-checks install -y tar R-base # no binaries available :(
+
+    - uses: actions/checkout@v3
 
     - name: Check
       env:
@@ -66,8 +66,8 @@ jobs:
         export LANG=$(locale -a | grep utf8 | head -n1)
         Rscript -e 'install.packages(c("renv", "tinytest"), repos="https://cran.r-project.org")'
         R CMD build . && mkdir check
-        useradd -m docker && chown docker:docker check
-        su docker -c "R CMD check rspm_*.tar.gz --no-manual -o check"
+        useradd -m rspm && chown rspm:rspm check
+        su rspm -c "R CMD check rspm_*.tar.gz --no-manual -o check"
 
     - name: Upload check results
       if: ${{ failure() }}
