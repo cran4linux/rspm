@@ -1,5 +1,5 @@
-## Minor release
-Add support for CentOS/RHEL 9 and derivatives.
+## Patch release
+Fix version detection in CentOS.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04, ubuntu:18.04 on GitHub
