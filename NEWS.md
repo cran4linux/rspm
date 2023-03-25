@@ -1,3 +1,8 @@
+# rspm 0.3.1
+
+- Fix version detection in CentOS (#18 addressing #16).
+- Fix unpacking for new rpm versions (as part of #18).
+
 # rspm 0.3.0
 
 - Add support for CentOS/RHEL 9 and derivatives (#13 addressing #12).

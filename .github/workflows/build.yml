@@ -32,6 +32,7 @@ jobs:
     - name: Install dependencies (CentOS 8)
       if: ${{ matrix.config.tag == 'stream8' }}
       run: |
+        dnf install -y 'dnf-command(config-manager)'
         dnf config-manager --set-enabled powertools
         dnf install -y epel-release epel-next-release
         dnf install -y R-core

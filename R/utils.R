@@ -1,6 +1,7 @@
 p <- function(...) paste(..., collapse=" ")
 system <- function(...) base::system(p(...), intern=FALSE)
 system_ <- function(...) suppressWarnings(base::system(p(...), intern=TRUE))
+safe_version <- function(x) package_version(paste0(x, "-1"))
 
 user_dir <- function(path="") {
   user_dir <- opt$user_dir
