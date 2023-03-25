@@ -5,7 +5,8 @@ rpm_version <- function() {
   package_version(ver)
 }
 
-if (rpm_version() >= "4.16") {
+# disable this altogether, it seems to fail in docker environments
+if (rpm_version() >= "1000.0") {
   centos_requirements <- c()
   centos_install_rpm <- function() {
     system("rpm -i --nodeps --noscripts --notriggers --nosignature --excludedocs",
