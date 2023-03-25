@@ -1,5 +1,5 @@
 os <- tryCatch(rspm:::os(), error=function(e) {
-  expect_equal("OS not supported", strsplit(e$message, ": ")[[1]][2])
+  tinytest::expect_match(e$message, "OS not supported")
   exit_file(e$message)
 })
 
