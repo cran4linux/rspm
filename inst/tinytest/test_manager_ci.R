@@ -1,6 +1,9 @@
 if (!at_home())
   exit_file("not in a CI environment")
-os <- tryCatch(rspm:::os(), error=function(e) exit_file(e$message))
+os <- tryCatch(rspm:::os(), error=function(e) {
+  expect_true(grepl("OS not supported", e$message))
+  exit_file(e$message)
+})
 
 # requirements
 reqs <- rspm:::check_requirements()

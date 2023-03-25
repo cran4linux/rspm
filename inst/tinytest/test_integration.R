@@ -1,4 +1,7 @@
-os <- tryCatch(rspm:::os(), error=function(e) exit_file(e$message))
+os <- tryCatch(rspm:::os(), error=function(e) {
+  expect_true(grepl("OS not supported", e$message))
+  exit_file(e$message)
+})
 
 # user agent
 expect_true(grepl(getRversion(), getOption("HTTPUserAgent")))
