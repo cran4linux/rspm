@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^\.github$
 ^docs$
+^docker$
 ^_pkgdown.yml$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
