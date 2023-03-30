@@ -13,9 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {image: 'centos', tag: 'centos7', repo: 'quay.io/centos/'}
-        - {image: 'centos', tag: 'stream8', repo: 'quay.io/centos/'}
-        - {image: 'centos', tag: 'stream9', repo: 'quay.io/centos/'}
+        - {image: 'centos', tag: 'centos7', repo: 'ghcr.io/enchufa2/r-'}
+        - {image: 'centos', tag: 'stream8', repo: 'ghcr.io/enchufa2/r-'}
+        - {image: 'centos', tag: 'stream9', repo: 'ghcr.io/enchufa2/r-'}
         - {image: 'ubuntu', tag: '18.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '20.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '22.04',   repo: 'rocker/r-'}
@@ -23,32 +23,8 @@ jobs:
         #- {image: 'leap',   tag: '15.4',    repo: 'opensuse/'}
 
     steps:
-    - name: Install dependencies (CentOS 7)
-      if: ${{ matrix.config.tag == 'centos7' }}
-      run: |
-        yum install -y epel-release
-        yum install -y R-core
-
-    - name: Install dependencies (CentOS 8)
-      if: ${{ matrix.config.tag == 'stream8' }}
-      run: |
-        dnf install -y 'dnf-command(config-manager)'
-        dnf config-manager --set-enabled powertools
-        dnf install -y epel-release epel-next-release
-        dnf install -y R-core
-
-    - name: Install dependencies (CentOS 9)
-      if: ${{ matrix.config.tag == 'stream9' }}
-      run: |
-        dnf install -y 'dnf-command(config-manager)'
-        dnf config-manager --set-enabled crb
-        dnf install -y epel-release epel-next-release
-        dnf install -y R-core
-
     - name: Install dependencies (Ubuntu)
       if: ${{ matrix.config.image == 'ubuntu' }}
-      env:
-        DEBIAN_FRONTEND: noninteractive
       run: |
         apt update && apt install -y apt-file
 
