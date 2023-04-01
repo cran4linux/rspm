@@ -80,6 +80,16 @@ required for the integration with `install.packages` and `update.packages`.
 Note that, if `renv::install` or `renv::update` are called directly, then
 `rspm::install_sysreqs()` needs to be called manually.
 
+### Docker workflows
+
+In Docker containers, system requirements can be installed directly as root.
+Therefore, it is enough to include in your Dockerfile the following line
+right after `renv::restore()`:
+
+```Dockerfile
+RUN Rscript -e 'renv::install("rspm"); rspm::install_sysreqs()'
+```
+
 ## Technical details
 
 Since _always_, Linux R users have been struggling with source installations and
