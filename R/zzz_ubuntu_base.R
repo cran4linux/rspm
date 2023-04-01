@@ -1,13 +1,14 @@
-ubuntu_requirements <- c("apt-file")
+ubuntu_requirements <- function() c("apt-file")
 
 ubuntu_install <- function(pkgs) {
   system("apt-get", ubuntu_options(), "update")
   system("apt-get", ubuntu_options(), "-y -d install", p(pkgs))
   debs <- user_dir("var/cache/apt/archives/*.deb")
+  on.exit(unlink(Sys.glob(debs)))
+
   ver <- strsplit(system_("dpkg --version"), " ")[[1]][7]
   if (package_version(ver) >= "1.21")
     ubuntu_install_modern(debs) else ubuntu_install_old(debs)
-  unlink(Sys.glob(debs))
 }
 
 ubuntu_install_modern <- function(debs) {
@@ -29,8 +30,8 @@ ubuntu_install_sysreqs <- function(libs) {
   pkgs <- system_(apt_file, ubuntu_options(), "-l search --regexp", patt)
 
   # download and unpack
-  cat("Downloading and installing sysreqs...\n")
-  ubuntu_install(pkgs)
+  message("Downloading and installing sysreqs...\n")
+  os_install(pkgs)
 }
 
 ubuntu_options <- function() {

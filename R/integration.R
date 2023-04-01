@@ -31,7 +31,7 @@
 enable <- function() {
   check_requirements()
   enable_repo()
-  expr <- quote(get("install_sysreqs", asNamespace("rspm"))())
+  expr <- quote(rspm::install_sysreqs())
   opt$utils <- !exists("install.packages")
   if (opt$utils) {
     trace(utils::install.packages, exit=expr, print=FALSE)
@@ -73,39 +73,9 @@ disable_repo <- function() {
   opt$repos <- NULL
 }
 
-os <- function() {
-  os <- utils::read.table("/etc/os-release", sep="=", col.names=c("var", "val"),
-                          stringsAsFactors=FALSE)
-  os <- stats::setNames(as.list(os$val), os$var)
-  code <- switch(
-    id <- strsplit(os$ID, "-")[[1]][1],
-    "ubuntu" = os$VERSION_CODENAME,
-    "centos" = , "rocky"  = , "almalinux" = , "ol" = , "rhel" =
-      paste0(if ((ver <- safe_version(os$VERSION_ID)$major) < 9)
-        "centos" else "rhel", ver),
-    "amzn"   = if (os$VERSION_ID == "2") "centos7" else
-      stop("OS not supported", call.=FALSE),
-    "sles"   = , "opensuse" =
-      paste0("opensuse", sub("\\.", "", os$VERSION_ID)),
-    stop("OS not supported", call.=FALSE)
-  )
-  list(id = id, code = code)
-}
-
 .onLoad <- function(libname, pkgname) {
   options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(
     getRversion(), R.version["platform"], R.version["arch"], R.version["os"])))
 
-  if (is.na(path <- Sys.getenv("RSPM_USER_DIR", unset=NA)))
-    path <- user_dir()
-  opt$user_dir <- path
-  dir.create(user_dir(), showWarnings=FALSE, recursive=TRUE, mode="0755")
-
-  reg.finalizer(opt, onexit=TRUE, function(opt) {
-    path <- opt$user_dir
-    while (length(setdiff(dir(path, all.files=TRUE), c(".", ".."))) == 0) {
-      unlink(path, recursive=TRUE, force=TRUE)
-      path <- dirname(path)
-    }
-  })
+  user_dir_init()
 }

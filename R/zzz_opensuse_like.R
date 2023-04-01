@@ -1,5 +1,8 @@
-sles_requirements <- opensuse_requirements
+opensuse_requirements ->
+  sles_requirements
 
-sles_install <- function(pkgs) opensuse_install(pkgs)
+opensuse_install ->
+  sles_install
 
-sles_install_sysreqs <- function(libs) opensuse_install_sysreqs(libs)
+opensuse_install_sysreqs ->
+  sles_install_sysreqs

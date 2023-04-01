@@ -3,8 +3,10 @@ system <- function(...) base::system(p(...), intern=FALSE)
 system_ <- function(...) suppressWarnings(base::system(p(...), intern=TRUE))
 safe_version <- function(x) package_version(paste0(x, "-1"))
 
+user_dir_base <- NULL
+
 user_dir <- function(path) {
-  user_dir <- opt$user_dir
+  user_dir <- user_dir_base
   if (is.null(user_dir)) {
     tenv <- asNamespace("tools")
     if (exists("R_user_dir", tenv))
@@ -16,6 +18,23 @@ user_dir <- function(path) {
   user_dir
 }
 
+user_dir_init <- function() {
+  if (!is.null(user_dir_base)) return()
+
+  if (is.na(path <- Sys.getenv("RSPM_USER_DIR", unset=NA)))
+    path <- user_dir()
+  user_dir_base <<- path
+  dir.create(user_dir(), showWarnings=FALSE, recursive=TRUE, mode="0755")
+
+  reg.finalizer(opt, onexit=TRUE, function(opt) {
+    path <- user_dir_base
+    while (length(setdiff(dir(path, all.files=TRUE), c(".", ".."))) == 0) {
+      unlink(path, recursive=TRUE, force=TRUE)
+      path <- dirname(path)
+    }
+  })
+}
+
 user_lib <- function(lib.loc = NULL) {
   if (is.null(lib.loc))
     lib.loc <- .libPaths()[1]
@@ -23,8 +42,7 @@ user_lib <- function(lib.loc = NULL) {
 }
 
 check_requirements <- function(cmd) {
-  preqs <- get(paste0(os()$id, "_requirements"), asNamespace("rspm"))
-  preqs <- Sys.which(preqs)
+  preqs <- Sys.which(os_requirements())
   if (length(x <- names(preqs)[preqs == ""]))
     stop("please, install the following required utilities: ", x, call.=FALSE)
 
@@ -35,8 +53,8 @@ check_requirements <- function(cmd) {
   reqs <- Sys.which(names(reqs))
 
   if (length(missing <- basename(names(reqs))[reqs == ""])) {
-    cat("Downloading and installing required utilities...\n")
-    get(paste0(os()$id, "_install"), asNamespace("rspm"))(missing)
+    message("Downloading and installing required utilities...\n")
+    os_install(missing)
     reqs <- Sys.which(names(reqs))
   }
 
