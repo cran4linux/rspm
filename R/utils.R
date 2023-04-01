@@ -3,7 +3,7 @@ system <- function(...) base::system(p(...), intern=FALSE)
 system_ <- function(...) suppressWarnings(base::system(p(...), intern=TRUE))
 safe_version <- function(x) package_version(paste0(x, "-1"))
 
-user_dir <- function(path="") {
+user_dir <- function(path) {
   user_dir <- opt$user_dir
   if (is.null(user_dir)) {
     tenv <- asNamespace("tools")
@@ -11,7 +11,9 @@ user_dir <- function(path="") {
       R_user_dir <- get("R_user_dir", tenv)
     user_dir <- R_user_dir("rspm")
   }
-  file.path(user_dir, path)
+  if (!missing(path))
+    user_dir <- file.path(user_dir, path)
+  user_dir
 }
 
 user_lib <- function(lib.loc = NULL) {
