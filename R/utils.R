@@ -47,7 +47,7 @@ check_requirements <- function(cmd) {
   if (length(x <- names(preqs)[preqs == ""]))
     stop("please, install the following required utilities: ", x, call.=FALSE)
 
-  reqs <- c("ldd", "patchelf")
+  reqs <- c("ldd", if (!root()) "patchelf")
   reqs <- Sys.which(reqs)
   idx <- reqs == ""
   names(reqs)[idx] <- file.path(user_dir("usr/bin"), names(reqs)[idx])
