@@ -30,7 +30,7 @@ ubuntu_install_sysreqs <- function(libs) {
   pkgs <- system_(apt_file, ubuntu_options(), "-l search --regexp", patt)
 
   # download and unpack
-  message("Downloading and installing sysreqs...\n")
+  message("Downloading and installing sysreqs...")
   os_install(pkgs)
 }
 

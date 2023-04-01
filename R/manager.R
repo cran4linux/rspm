@@ -42,7 +42,7 @@ ldd_missing <- function(lib.loc = NULL) {
 set_rpath <- function(lib.loc = NULL) {
   lib.loc <- user_lib(lib.loc)
   patchelf <- check_requirements("patchelf")
-  message("Configuring sysreqs...\n")
+  message("Configuring sysreqs...")
 
   slibs <- list.files(user_dir("usr"), "\\.so", full.names=TRUE, recursive=TRUE)
   slibs <- slibs[!is.na(file.info(slibs)$size)]

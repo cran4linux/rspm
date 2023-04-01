@@ -53,7 +53,7 @@ check_requirements <- function(cmd) {
   reqs <- Sys.which(names(reqs))
 
   if (length(missing <- basename(names(reqs))[reqs == ""])) {
-    message("Downloading and installing required utilities...\n")
+    message("Downloading and installing required utilities...")
     os_install(missing)
     reqs <- Sys.which(names(reqs))
   }

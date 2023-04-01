@@ -13,6 +13,6 @@ centos_install <- function(pkgs) {
 }
 
 centos_install_sysreqs <- function(libs) {
-  message("Downloading and installing sysreqs...\n")
+  message("Downloading and installing sysreqs...")
   os_install(paste0("*/", libs, collapse=" "))
 }
