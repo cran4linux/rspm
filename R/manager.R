@@ -25,7 +25,7 @@ install_sysreqs <- function() {
 
   # install sysreqs and update rpath
   os_install_sysreqs(libs)
-  set_rpath()
+  if (!root()) set_rpath()
 }
 
 ldd_missing <- function(lib.loc = NULL) {
