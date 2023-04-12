@@ -7,17 +7,15 @@ centos_install <- function(pkgs) {
   old <- setwd(temp)
   on.exit({ setwd(old); unlink(temp, recursive=TRUE, force=TRUE) })
 
-  cmd <- "yumdownloader --resolve"
-  if (Sys.which("dnf") != "")
-    cmd <- "dnf download --resolve"
-  system(cmd, p(pkgs))
+  cmd <- if (Sys.which("dnf") != "")
+    "dnf download" else "yumdownloader"
+  system(p(cmd, "--resolve"), p(pkgs))
   rpm_install()
 }
 
 centos_install_root <- function(pkgs) {
-  cmd <- "yum"
-  if (Sys.which("dnf") != "")
-    cmd <- "dnf"
+  cmd <- if (Sys.which("dnf") != "")
+    "dnf" else "yum"
   system(cmd, "-y install", p(pkgs))
 }
 
