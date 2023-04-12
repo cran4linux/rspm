@@ -5,14 +5,14 @@ jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     runs-on: ubuntu-latest
-    name: ${{ matrix.config.image }}:${{ matrix.config.tag }}
+    name: ${{ matrix.image }}:${{ matrix.tag }}
     container:
-      image: ${{ matrix.config.repo }}${{ matrix.config.image }}:${{ matrix.config.tag }}
+      image: ${{ matrix.repo }}${{ matrix.image }}:${{ matrix.tag }}
 
     strategy:
       fail-fast: false
       matrix:
-        config:
+        include:
         - {image: 'centos', tag: 'centos7', repo: 'ghcr.io/enchufa2/r-'}
         - {image: 'centos', tag: 'stream8', repo: 'ghcr.io/enchufa2/r-'}
         - {image: 'centos', tag: 'stream9', repo: 'ghcr.io/enchufa2/r-'}
@@ -24,14 +24,14 @@ jobs:
 
     steps:
     - name: Install dependencies (Ubuntu)
-      if: ${{ matrix.config.image == 'ubuntu' }}
+      if: ${{ matrix.image == 'ubuntu' }}
       run: |
         apt update && apt install -y apt-file
 
     - name: Install dependencies (openSUSE)
-      if: ${{ matrix.config.image == 'leap' }}
+      if: ${{ matrix.image == 'leap' }}
       run: |
-        zypper addrepo https://download.opensuse.org/repositories/Education/${{ matrix.config.tag }}/Education.repo
+        zypper addrepo https://download.opensuse.org/repositories/Education/${{ matrix.tag }}/Education.repo
         zypper --no-gpg-checks install -y tar R-base # no binaries available :(
 
     - uses: actions/checkout@v3
@@ -50,5 +50,5 @@ jobs:
       if: ${{ failure() }}
       uses: actions/upload-artifact@master
       with:
-        name: r-${{ matrix.config.image }}-${{ matrix.config.tag }}-results
+        name: r-${{ matrix.image }}-${{ matrix.tag }}-results
         path: check
