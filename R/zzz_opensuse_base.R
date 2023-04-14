@@ -1,12 +1,18 @@
-opensuse_requirements <- c()
+opensuse_requirements <- function() rpm_requirements()
 
 opensuse_install <- function(pkgs) {
+  if (root()) return(opensuse_install_root(pkgs))
+
   dir.create(temp <- tempfile("rspm_"))
   old <- setwd(temp)
-  on.exit(setwd(old))
+  on.exit({ setwd(old); unlink(temp, recursive=TRUE, force=TRUE) })
+
   system("zypper --pkg-cache-dir . install -dy", p(pkgs))
-  system("rpm -i --nodeps --noscripts --notriggers --nosignature --excludedocs",
-         "-r", user_dir(), p(list.files(recursive=TRUE)))
+  rpm_install()
+}
+
+opensuse_install_root <- function(pkgs) {
+  system("zypper install -y", p(pkgs))
 }
 
 opensuse_install_sysreqs <- function(libs) {
@@ -16,6 +22,6 @@ opensuse_install_sysreqs <- function(libs) {
   pkgs <- trimws(sapply(strsplit(pkgs, "\\|"), "[", 2))
 
   # download and unpack
-  cat("Downloading and installing sysreqs...\n")
-  opensuse_install(pkgs)
+  message("Downloading and installing sysreqs...")
+  os_install(pkgs)
 }

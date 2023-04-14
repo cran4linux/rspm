@@ -17,15 +17,15 @@
 #' @name manager
 #' @export
 install_sysreqs <- function() {
-  cat("Inspecting installed packages...\n")
+  message("Inspecting installed packages...")
 
   # get missing libraries
   if (!length(libs <- ldd_missing()))
     return(invisible())
 
   # install sysreqs and update rpath
-  get(paste0(os()$id, "_install_sysreqs"), asNamespace("rspm"))(libs)
-  set_rpath()
+  os_install_sysreqs(libs)
+  if (!root()) set_rpath()
 }
 
 ldd_missing <- function(lib.loc = NULL) {
@@ -42,7 +42,7 @@ ldd_missing <- function(lib.loc = NULL) {
 set_rpath <- function(lib.loc = NULL) {
   lib.loc <- user_lib(lib.loc)
   patchelf <- check_requirements("patchelf")
-  cat("Configuring sysreqs...\n")
+  message("Configuring sysreqs...")
 
   slibs <- list.files(user_dir("usr"), "\\.so", full.names=TRUE, recursive=TRUE)
   slibs <- slibs[!is.na(file.info(slibs)$size)]

@@ -1,3 +1,8 @@
+# rspm 0.4.0
+
+- Implement root mode to improve Docker workflows (#20 addressing #17).
+- Internal refactoring to improve extensibility (as part of #20).
+
 # rspm 0.3.1
 
 - Fix version detection in CentOS (#18 addressing #16).

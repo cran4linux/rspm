@@ -19,8 +19,7 @@ expect_true("RSPM" %in% names(getOption("repos")))
 expect_true(grepl(rspm:::os()$code, getOption("repos")["RSPM"]))
 
 tracer <- paste(body(utils::install.packages), collapse="")
-expected <- "get(\"install_sysreqs\", asNamespace(\"rspm\"))()"
-expect_true(grepl(expected, tracer, fixed=TRUE))
+expect_true(grepl("rspm::install_sysreqs()", tracer, fixed=TRUE))
 
 disable()
 expect_false(inherits(utils::install.packages, "functionWithTrace"))

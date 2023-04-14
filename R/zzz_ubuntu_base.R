@@ -1,23 +1,29 @@
-ubuntu_requirements <- c("apt-file")
+ubuntu_requirements <- function() c("apt-file")
 
 ubuntu_install <- function(pkgs) {
+  if (root()) return(ubuntu_install_root(pkgs))
+
   system("apt-get", ubuntu_options(), "update")
   system("apt-get", ubuntu_options(), "-y -d install", p(pkgs))
   debs <- user_dir("var/cache/apt/archives/*.deb")
+  on.exit(unlink(Sys.glob(debs)))
+  dpkg_install(debs)
+}
+
+ubuntu_install_root <- function(pkgs) {
+  system("apt-get update")
+  system("apt-get -y install", p(pkgs))
+}
+
+dpkg_install <- function(debs) {
   ver <- strsplit(system_("dpkg --version"), " ")[[1]][7]
-  if (package_version(ver) >= "1.21")
-    ubuntu_install_modern(debs) else ubuntu_install_old(debs)
-  unlink(Sys.glob(debs))
-}
-
-ubuntu_install_modern <- function(debs) {
-  system("dpkg --unpack --force-not-root --force-script-chrootless",
-         "--instdir", user_dir(), debs)
-}
-
-ubuntu_install_old <- function(debs) {
-  for (file in Sys.glob(debs))
-    system("dpkg-deb -x", file, user_dir())
+  if (package_version(ver) >= "1.21") {
+    system("dpkg --unpack --force-not-root --force-script-chrootless",
+           "--instdir", user_dir(), debs)
+  } else {
+    for (file in Sys.glob(debs))
+      system("dpkg-deb -x", file, user_dir())
+  }
 }
 
 ubuntu_install_sysreqs <- function(libs) {
@@ -29,11 +35,13 @@ ubuntu_install_sysreqs <- function(libs) {
   pkgs <- system_(apt_file, ubuntu_options(), "-l search --regexp", patt)
 
   # download and unpack
-  cat("Downloading and installing sysreqs...\n")
-  ubuntu_install(pkgs)
+  message("Downloading and installing sysreqs...")
+  os_install(pkgs)
 }
 
 ubuntu_options <- function() {
+  if (root()) return(NULL)
+
   lists <- file.path(user_dir("var"), "lib/apt/lists")
   cache <- file.path(user_dir("var"), "cache/apt/archives")
   dir.create(lists, showWarnings=FALSE, recursive=TRUE, mode="0755")
