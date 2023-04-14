@@ -8,6 +8,7 @@ ubuntu_install <- function(pkgs) {
   debs <- user_dir("var/cache/apt/archives/*.deb")
   on.exit(unlink(Sys.glob(debs)))
   dpkg_install(debs)
+  fix_libs()
 }
 
 ubuntu_install_root <- function(pkgs) {
@@ -24,6 +25,13 @@ dpkg_install <- function(debs) {
     for (file in Sys.glob(debs))
       system("dpkg-deb -x", file, user_dir())
   }
+}
+
+# move libs from x86_64-linux-gnu one level up (see #19)
+fix_libs <- function() {
+  libs <- Sys.glob(user_dir("usr/lib/*-linux-gnu/*"))
+  file.copy(libs, user_dir("usr/lib/"), recursive=TRUE)
+  unlink(libs, recursive=TRUE)
 }
 
 ubuntu_install_sysreqs <- function(libs) {

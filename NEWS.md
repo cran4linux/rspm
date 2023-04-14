@@ -2,6 +2,7 @@
 
 - Implement root mode to improve Docker workflows (#20 addressing #17).
 - Internal refactoring to improve extensibility (as part of #20).
+- Remove libs' arch subfolder in Ubuntu to fix relative path issues (#19).
 
 # rspm 0.3.1
 
