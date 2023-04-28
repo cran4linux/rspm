@@ -9,7 +9,7 @@ RUN echo "install_weak_deps=False" >> /etc/dnf/dnf.conf \
     && dnf -y install 'dnf-command(config-manager)' \
     && dnf config-manager --set-enabled powertools \
     && dnf -y install epel-release epel-next-release \
-    && dnf -y install R-core \
+    && dnf -y install R-core-devel \
     && dnf -y clean all
 
 CMD ["bash"]
