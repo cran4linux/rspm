@@ -1,7 +1,7 @@
 FROM quay.io/centos/centos:stream9
 
 LABEL org.opencontainers.image.licenses="GPL-2.0" \
-      org.opencontainers.image.source="https://github.com/Enchufa2/rspm" \
+      org.opencontainers.image.source="https://github.com/cran4linux/rspm" \
       org.opencontainers.image.authors="Iñaki Ucar <iucar@fedoraproject.org>"
 
 # install R

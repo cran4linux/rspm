@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rspm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
       <ul class="navbar-nav"><li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/Enchufa2/rspm/" aria-label="github">
+  <a class="external-link nav-link" href="https://github.com/cran4linux/rspm/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -41,46 +41,53 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/Enchufa2/rspm/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/cran4linux/rspm/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.4.0" id="rspm-040">rspm 0.4.0<a class="anchor" aria-label="anchor" href="#rspm-040"></a></h2>
-<ul><li>Implement root mode to improve Docker workflows (<a href="https://github.com/Enchufa2/rspm/issues/20" class="external-link">#20</a> addressing <a href="https://github.com/Enchufa2/rspm/issues/17" class="external-link">#17</a>).</li>
-<li>Internal refactoring to improve extensibility (as part of <a href="https://github.com/Enchufa2/rspm/issues/20" class="external-link">#20</a>).</li>
-<li>Remove libs’ arch subfolder in Ubuntu to fix relative path issues (<a href="https://github.com/Enchufa2/rspm/issues/19" class="external-link">#19</a>).</li>
+<h2 class="pkg-version" data-toc-text="0.4.0.1" id="rspm-0401">rspm 0.4.0.1<a class="anchor" aria-label="anchor" href="#rspm-0401"></a></h2>
+<ul><li>Move to cran4linux org on GitHub, update URLs.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.0" id="rspm-040">rspm 0.4.0<a class="anchor" aria-label="anchor" href="#rspm-040"></a></h2><p class="text-muted">CRAN release: 2023-04-14</p>
+<ul><li>Implement root mode to improve Docker workflows (<a href="https://github.com/cran4linux/rspm/issues/20" class="external-link">#20</a> addressing <a href="https://github.com/cran4linux/rspm/issues/17" class="external-link">#17</a>).</li>
+<li>Internal refactoring to improve extensibility (as part of <a href="https://github.com/cran4linux/rspm/issues/20" class="external-link">#20</a>).</li>
+<li>Remove libs’ arch subfolder in Ubuntu to fix relative path issues (<a href="https://github.com/cran4linux/rspm/issues/19" class="external-link">#19</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="rspm-031">rspm 0.3.1<a class="anchor" aria-label="anchor" href="#rspm-031"></a></h2><p class="text-muted">CRAN release: 2023-03-26</p>
-<ul><li>Fix version detection in CentOS (<a href="https://github.com/Enchufa2/rspm/issues/18" class="external-link">#18</a> addressing <a href="https://github.com/Enchufa2/rspm/issues/16" class="external-link">#16</a>).</li>
-<li>Fix unpacking for new rpm versions (as part of <a href="https://github.com/Enchufa2/rspm/issues/18" class="external-link">#18</a>).</li>
+<ul><li>Fix version detection in CentOS (<a href="https://github.com/cran4linux/rspm/issues/18" class="external-link">#18</a> addressing <a href="https://github.com/cran4linux/rspm/issues/16" class="external-link">#16</a>).</li>
+<li>Fix unpacking for new rpm versions (as part of <a href="https://github.com/cran4linux/rspm/issues/18" class="external-link">#18</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="rspm-030">rspm 0.3.0<a class="anchor" aria-label="anchor" href="#rspm-030"></a></h2><p class="text-muted">CRAN release: 2022-12-22</p>
-<ul><li>Add support for CentOS/RHEL 9 and derivatives (<a href="https://github.com/Enchufa2/rspm/issues/13" class="external-link">#13</a> addressing <a href="https://github.com/Enchufa2/rspm/issues/12" class="external-link">#12</a>).</li></ul></div>
+<ul><li>Add support for CentOS/RHEL 9 and derivatives (<a href="https://github.com/cran4linux/rspm/issues/13" class="external-link">#13</a> addressing <a href="https://github.com/cran4linux/rspm/issues/12" class="external-link">#12</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="rspm-023">rspm 0.2.3<a class="anchor" aria-label="anchor" href="#rspm-023"></a></h2><p class="text-muted">CRAN release: 2022-11-21</p>
-<ul><li>Fix non-root unpacking for old rpm/dpkg versions (<a href="https://github.com/Enchufa2/rspm/issues/11" class="external-link">#11</a> addressing <a href="https://github.com/Enchufa2/rspm/issues/9" class="external-link">#9</a>, <a href="https://github.com/Enchufa2/rspm/issues/10" class="external-link">#10</a>).</li></ul></div>
+<ul><li>Fix non-root unpacking for old rpm/dpkg versions (<a href="https://github.com/cran4linux/rspm/issues/11" class="external-link">#11</a> addressing <a href="https://github.com/cran4linux/rspm/issues/9" class="external-link">#9</a>, <a href="https://github.com/cran4linux/rspm/issues/10" class="external-link">#10</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="rspm-022">rspm 0.2.2<a class="anchor" aria-label="anchor" href="#rspm-022"></a></h2><p class="text-muted">CRAN release: 2022-09-15</p>
-<ul><li>Fix root permission requirement for yum-based systems (<a href="https://github.com/Enchufa2/rspm/issues/9" class="external-link">#9</a>).</li>
+<ul><li>Fix root permission requirement for yum-based systems (<a href="https://github.com/cran4linux/rspm/issues/9" class="external-link">#9</a>).</li>
 <li>Clean up empty user directory.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="rspm-021">rspm 0.2.1<a class="anchor" aria-label="anchor" href="#rspm-021"></a></h2><p class="text-muted">CRAN release: 2022-08-16</p>
-<ul><li>Fix .Rprofile enabling error (<a href="https://github.com/Enchufa2/rspm/issues/8" class="external-link">#8</a>).</li>
+<ul><li>Fix .Rprofile enabling error (<a href="https://github.com/cran4linux/rspm/issues/8" class="external-link">#8</a>).</li>
 <li>Some fixes requested by CRAN.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="rspm-020">rspm 0.2.0<a class="anchor" aria-label="anchor" href="#rspm-020"></a></h2>
-<ul><li>Add support for CentOS 7, RHEL 7 and 8 (<a href="https://github.com/Enchufa2/rspm/issues/1" class="external-link">#1</a>).</li>
-<li>Add support for several RHEL derivatives: Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2 (<a href="https://github.com/Enchufa2/rspm/issues/2" class="external-link">#2</a>).</li>
-<li>Add support for openSUSE / SLES 15.3 (<a href="https://github.com/Enchufa2/rspm/issues/3" class="external-link">#3</a>).</li>
-<li>Add support for <code>renv</code> projects via <code><a href="../reference/renv_init.html">rspm::renv_init()</a></code> (<a href="https://github.com/Enchufa2/rspm/issues/5" class="external-link">#5</a> closing <a href="https://github.com/Enchufa2/rspm/issues/4" class="external-link">#4</a>).</li>
+<ul><li>Add support for CentOS 7, RHEL 7 and 8 (<a href="https://github.com/cran4linux/rspm/issues/1" class="external-link">#1</a>).</li>
+<li>Add support for several RHEL derivatives: Rocky Linux 8, AlmaLinux 8, Oracle Linux 7 and 8, Amazon Linux 2 (<a href="https://github.com/cran4linux/rspm/issues/2" class="external-link">#2</a>).</li>
+<li>Add support for openSUSE / SLES 15.3 (<a href="https://github.com/cran4linux/rspm/issues/3" class="external-link">#3</a>).</li>
+<li>Add support for <code>renv</code> projects via <code><a href="../reference/renv_init.html">rspm::renv_init()</a></code> (<a href="https://github.com/cran4linux/rspm/issues/5" class="external-link">#5</a> closing <a href="https://github.com/cran4linux/rspm/issues/4" class="external-link">#4</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="rspm-010">rspm 0.1.0<a class="anchor" aria-label="anchor" href="#rspm-010"></a></h2>
-<ul><li>Initial release, with support for CentOS 8 and Ubuntu 18.04, 20.04 and 22.04.</li></ul></div>
+<ul><li>Initial release, with support for CentOS 8 and Ubuntu 18.04, 20.04 and 22.04.</li>
+</ul></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

@@ -1,7 +1,7 @@
 Package: rspm
 Type: Package
 Title: 'RStudio' Package Manager
-Version: 0.4.0
+Version: 0.4.0.1
 Authors@R: c(
     person("Iñaki", "Ucar", email="iucar@fedoraproject.org",
       role=c("aut", "cph", "cre"), comment=c(ORCID="0000-0001-6403-5550")),
@@ -18,6 +18,6 @@ Copyright: file COPYRIGHTS
 Encoding: UTF-8
 OS_type: unix
 Suggests: renv, tinytest
-URL: https://enchufa2.github.io/rspm/
-BugReports: https://github.com/Enchufa2/rspm/issues
-RoxygenNote: 7.2.2
+URL: https://cran4linux.github.io/rspm/
+BugReports: https://github.com/cran4linux/rspm/issues
+RoxygenNote: 7.2.3

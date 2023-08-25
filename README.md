@@ -1,7 +1,7 @@
 # rspm: RStudio Package Manager
 
 <!-- badges: start -->
-[![Build Status](https://github.com/Enchufa2/rspm/workflows/build/badge.svg)](https://github.com/Enchufa2/rspm/actions)
+[![Build Status](https://github.com/cran4linux/rspm/workflows/build/badge.svg)](https://github.com/cran4linux/rspm/actions)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rspm)](https://cran.r-project.org/package=rspm)
 <!-- badges: end -->
 
@@ -22,8 +22,8 @@
 Both R packages and system dependencies **are installed into the user home**.
 For lightning-fast system-based installations (which have other advantages,
 such as multitenancy, reversibility and automatic updates, still without root
-privileges), see the [bspm](https://enchufa2.github.io/bspm/) package and
-projects such as [cran2copr](https://github.com/Enchufa2/cran2copr) for Fedora
+privileges), see the [bspm](https://cran4linux.github.io/bspm/) package and
+projects such as [cran2copr](https://github.com/cran4linux/cran2copr) for Fedora
 or [r2u](https://github.com/eddelbuettel/r2u) for Ubuntu.
 
 ## Demo
@@ -32,14 +32,14 @@ Here we enable `rspm` and trigger a binary installation of the `units` package.
 Then, we can see how the UDUNITS-2 dependency is detected, downloaded and
 configured.
 
-![](https://github.com/Enchufa2/rspm/blob/main/docs/assets/rspm_units.gif?raw=true)
+![](https://github.com/cran4linux/rspm/blob/main/docs/assets/rspm_units.gif?raw=true)
 
 ## Installation and usage
 
 You can install it directly from GitHub using the `remotes` package:
 
 ```r
-remotes::install_github("Enchufa2/rspm")
+remotes::install_github("cran4linux/rspm")
 ```
 
 ### Basic usage
@@ -104,7 +104,7 @@ OBS repo for OpenSUSE, the
 Fedora, the [ArchRPkgs](https://github.com/dvdesolve/ArchRPkgs) repo for Arch
 and the [r2u](https://github.com/eddelbuettel/r2u) repo again for Ubuntu.
 These are tightly integrated and can be fully managed without leaving the R
-console thanks to the [bspm](https://enchufa2.github.io/bspm/) package.
+console thanks to the [bspm](https://cran4linux.github.io/bspm/) package.
 See [this paper](https://arxiv.org/abs/2103.08069) for a detailed review.
 
 On the other hand, RStudio recently took a complementary approach by building
@@ -140,7 +140,7 @@ made, and without requiring any special privilege.
 
 If you find any bug or you'd like to request support for other distributions
 (importantly, they must be supported by RStudio), please file issues at our
-[GitHub issue tracker](https://github.com/Enchufa2/rspm/issues).
+[GitHub issue tracker](https://github.com/cran4linux/rspm/issues).
 Note though that some quirks may be expected:
 
 - _Some library is not found_. This means that the library version in your

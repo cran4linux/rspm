@@ -20,7 +20,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      IMAGE: enchufa2/r-centos
+      IMAGE: cran4linux/r-centos
 
     steps:
     - name: Checkout

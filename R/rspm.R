@@ -10,7 +10,7 @@
 #'
 #' @author Iñaki Ucar
 #'
-#' @references \url{https://enchufa2.github.io/rspm/}
+#' @references \url{https://cran4linux.github.io/rspm/}
 #'
 #' @docType package
 #' @name rspm-package

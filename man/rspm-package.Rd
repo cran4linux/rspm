@@ -14,7 +14,7 @@ distributions are CentOS / RHEL 7-9, and several RHEL derivatives
 openSUSE / SLES 15.3-4, and Ubuntu 18.04, 20.04 and 22.04.
 }
 \references{
-\url{https://enchufa2.github.io/rspm/}
+\url{https://cran4linux.github.io/rspm/}
 }
 \seealso{
 \code{\link{manager}}, \code{\link{integration}}

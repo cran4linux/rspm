@@ -5,8 +5,8 @@ local({
   }
 
   try_install_if_not_available("rspm@VERSION")
-  try_install_if_not_available("Enchufa2/rspm@VERSION")
-  try_install_if_not_available("Enchufa2/rspm")
+  try_install_if_not_available("cran4linux/rspm@VERSION")
+  try_install_if_not_available("cran4linux/rspm")
 
   try(rspm::enable(), silent=TRUE)
 })
