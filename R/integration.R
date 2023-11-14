@@ -58,7 +58,7 @@ disable <- function() {
 }
 
 globalVariables(c("install.packages", "update.packages"))
-url <- "https://packagemanager.rstudio.com/all/__linux__/%s/latest"
+url <- "https://packagemanager.posit.co/all/__linux__/%s/latest"
 opt <- new.env(parent=emptyenv())
 
 enable_repo <- function() {

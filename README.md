@@ -7,7 +7,7 @@
 
 ## Key features
 
-- Connects to [RStudio Public Package Manager](https://packagemanager.rstudio.com/)
+- Connects to [RStudio Public Package Manager](https://packagemanager.posit.co/)
   to provide **fast binary installations** of R packages on Linux.
 - **Complete coverage** of CRAN and BioConductor packages. 
 - **Full integration** with the system package manager to resolve, download and
@@ -17,6 +17,7 @@
 - Support for **RHEL derivatives**:
   Rocky Linux 8-9, AlmaLinux 8-9, Oracle Linux 7-9, Amazon Linux 2.
 - Support for **openSUSE / SLES** 15.3 and 15.4.
+- Support for **Debian** 11 and 12 (requires `apt-file`).
 - Support for **Ubuntu** 18.04, 20.04 and 22.04 (requires `apt-file`).
 
 Both R packages and system dependencies **are installed into the user home**.
@@ -110,7 +111,7 @@ See [this paper](https://arxiv.org/abs/2103.08069) for a detailed review.
 On the other hand, RStudio recently took a complementary approach by building
 binaries---for various distributions, R versions and architectures---and serving
 them via their own CRAN mirror, also called the
-[RStudio Public Package Manager (RSPM)](https://packagemanager.rstudio.com/).
+[RStudio Public Package Manager (RSPM)](https://packagemanager.posit.co/).
 In contrast to the previous solutions, this method allows the user to install
 binary packages as _user packages_ under their home directory (virtually
 anywhere), instead of as _system packages_. The main issue is that the user has
