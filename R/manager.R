@@ -34,7 +34,7 @@ ldd_missing <- function(lib.loc = NULL) {
 
   libs <- list.files(lib.loc, "\\.so$", full.names=TRUE, recursive=TRUE)
   libs <- system_(ldd, p(libs), "2>&1")
-  libs <- grep("not found", libs, value=TRUE)
+  libs <- grep("not found$", libs, value=TRUE)
   libs <- sapply(strsplit(trimws(libs), " => "), "[", 1)
   libs
 }

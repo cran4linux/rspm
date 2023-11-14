@@ -18,9 +18,9 @@ debian_install_root <- function(pkgs) {
 
 dpkg_install <- function(debs) {
   ver <- strsplit(system_("dpkg --version"), " ")[[1]][7]
-  if (package_version(ver) >= "1.21") {
+  if (package_version(ver) >= "1000.0") { # disable, was 1.21
     system("dpkg --unpack --force-not-root --force-script-chrootless",
-           "--instdir", user_dir(), debs)
+           "--root", user_dir(), debs)
   } else {
     for (file in Sys.glob(debs))
       system("dpkg-deb -x", file, user_dir())
@@ -54,6 +54,6 @@ debian_options <- function() {
   cache <- file.path(user_dir("var"), "cache/apt/archives")
   dir.create(lists, showWarnings=FALSE, recursive=TRUE, mode="0755")
   dir.create(cache, showWarnings=FALSE, recursive=TRUE, mode="0755")
-  paste0("-o dir::state::lists=", lists, " -o dir::cache=", dirname(cache),
+  paste0("-o Dir::State::Lists=", lists, " -o Dir::Cache=", dirname(cache),
          " -o Debug::NoLocking=1")
 }
