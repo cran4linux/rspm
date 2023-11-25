@@ -16,7 +16,7 @@ os <- function() {
   os <- stats::setNames(as.list(os$val), os$var)
   code <- switch(
     id <- strsplit(os$ID, "-")[[1]][1],
-    "ubuntu" = os$VERSION_CODENAME,
+    "debian" = , "ubuntu" = os$VERSION_CODENAME,
     "centos" = , "rocky"  = , "almalinux" = , "ol" = , "rhel" =
       paste0(if ((ver <- safe_version(os$VERSION_ID)$major) < 9)
         "centos" else "rhel", ver),

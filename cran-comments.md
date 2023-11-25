@@ -1,5 +1,5 @@
 ## Minor release
-New root mode to improve Docker workflows + some fixes for Ubuntu.
+Add support for Debian.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04, ubuntu:18.04 on GitHub

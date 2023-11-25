@@ -19,12 +19,13 @@ jobs:
         - {image: 'ubuntu', tag: '18.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '20.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '22.04',   repo: 'rocker/r-'}
+        - {image: 'base',   tag: 'latest',  repo: 'rocker/r-'}
         #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
         #- {image: 'leap',   tag: '15.4',    repo: 'opensuse/'}
 
     steps:
     - name: Install dependencies (Ubuntu)
-      if: ${{ matrix.image == 'ubuntu' }}
+      if: ${{ matrix.image == 'ubuntu' || matrix.image == 'base' }}
       run: |
         apt update && apt install -y apt-file
 
