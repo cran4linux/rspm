@@ -7,24 +7,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Enables binary package installations on Linux distributions.
     Provides access to RStudio public repositories at
-    &lt;https://packagemanager.rstudio.com&gt;, and transparent management of
+    &lt;https://packagemanager.posit.co&gt;, and transparent management of
     system requirements without administrative privileges. Currently supported
     distributions are CentOS / RHEL 7-9, and several RHEL derivatives
     (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux 2),
-    openSUSE / SLES 15.3-4, and Ubuntu 18.04, 20.04 and 22.04.">
+    openSUSE / SLES 15.3-4, Debian 11-12, and Ubuntu LTS 18-22.">
 <title>RStudio Package Manager • rspm</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="RStudio Package Manager">
 <meta property="og:description" content="Enables binary package installations on Linux distributions.
     Provides access to RStudio public repositories at
-    &lt;https://packagemanager.rstudio.com&gt;, and transparent management of
+    &lt;https://packagemanager.posit.co&gt;, and transparent management of
     system requirements without administrative privileges. Currently supported
     distributions are CentOS / RHEL 7-9, and several RHEL derivatives
     (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux 2),
-    openSUSE / SLES 15.3-4, and Ubuntu 18.04, 20.04 and 22.04.">
+    openSUSE / SLES 15.3-4, Debian 11-12, and Ubuntu LTS 18-22.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -38,7 +38,7 @@
     
     <a class="navbar-brand me-2" href="index.html">rspm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,7 @@
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Connects to <a href="https://packagemanager.rstudio.com/" class="external-link">RStudio Public Package Manager</a> to provide <strong>fast binary installations</strong> of R packages on Linux.</li>
+<li>Connects to <a href="https://packagemanager.posit.co/" class="external-link">RStudio Public Package Manager</a> to provide <strong>fast binary installations</strong> of R packages on Linux.</li>
 <li>
 <strong>Complete coverage</strong> of CRAN and BioConductor packages.</li>
 <li>
@@ -91,6 +91,7 @@
 <li>Support for <strong>CentOS / RHEL</strong> 7, 8 and 9.</li>
 <li>Support for <strong>RHEL derivatives</strong>: Rocky Linux 8-9, AlmaLinux 8-9, Oracle Linux 7-9, Amazon Linux 2.</li>
 <li>Support for <strong>openSUSE / SLES</strong> 15.3 and 15.4.</li>
+<li>Support for <strong>Debian</strong> 11 and 12 (requires <code>apt-file</code>).</li>
 <li>Support for <strong>Ubuntu</strong> 18.04, 20.04 and 22.04 (requires <code>apt-file</code>).</li>
 </ul>
 <p>Both R packages and system dependencies <strong>are installed into the user home</strong>. For lightning-fast system-based installations (which have other advantages, such as multitenancy, reversibility and automatic updates, still without root privileges), see the <a href="https://cran4linux.github.io/bspm/" class="external-link">bspm</a> package and projects such as <a href="https://github.com/cran4linux/cran2copr" class="external-link">cran2copr</a> for Fedora or <a href="https://github.com/eddelbuettel/r2u" class="external-link">r2u</a> for Ubuntu.</p>
@@ -133,14 +134,14 @@
 <h3 id="docker-workflows">Docker workflows<a class="anchor" aria-label="anchor" href="#docker-workflows"></a>
 </h3>
 <p>In Docker containers, system requirements can be installed directly as root. Therefore, it is enough to include in your Dockerfile the following line right after <code><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">renv::restore()</a></code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'renv::install("rspm"); rspm::install_sysreqs()'</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'renv::install("rspm"); rspm::install_sysreqs()'</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="technical-details">Technical details<a class="anchor" aria-label="anchor" href="#technical-details"></a>
 </h2>
 <p>Since <em>always</em>, Linux R users have been struggling with source installations and manual management of build dependencies. Several projects over the years tried to lessen this pain by building repositories of binaries that complement and scale up the offer by various distributions. See e.g. the <a href="https://launchpad.net/~c2d4u.team/+archive/ubuntu/c2d4u4.0+" class="external-link">c2d4u.team/c2d4u4.0+</a> PPA repo for Ubuntu or, more recently, the <a href="https://build.opensuse.org/project/show/devel:languages:R:autoCRAN" class="external-link">autoCRAN</a> OBS repo for OpenSUSE, the <a href="https://copr.fedorainfracloud.org/coprs/iucar/cran/" class="external-link">iucar/cran</a> Copr repo for Fedora, the <a href="https://github.com/dvdesolve/ArchRPkgs" class="external-link">ArchRPkgs</a> repo for Arch and the <a href="https://github.com/eddelbuettel/r2u" class="external-link">r2u</a> repo again for Ubuntu. These are tightly integrated and can be fully managed without leaving the R console thanks to the <a href="https://cran4linux.github.io/bspm/" class="external-link">bspm</a> package. See <a href="https://arxiv.org/abs/2103.08069" class="external-link">this paper</a> for a detailed review.</p>
-<p>On the other hand, RStudio recently took a complementary approach by building binaries—for various distributions, R versions and architectures—and serving them via their own CRAN mirror, also called the <a href="https://packagemanager.rstudio.com/" class="external-link">RStudio Public Package Manager (RSPM)</a>. In contrast to the previous solutions, this method allows the user to install binary packages as <em>user packages</em> under their home directory (virtually anywhere), instead of as <em>system packages</em>. The main issue is that the user has still to manage run-time system requirements themselves (i.e., shared libraries required by some packages to work), so this method by itself produces installations that are fundamentally broken.</p>
+<p>On the other hand, RStudio recently took a complementary approach by building binaries—for various distributions, R versions and architectures—and serving them via their own CRAN mirror, also called the <a href="https://packagemanager.posit.co/" class="external-link">RStudio Public Package Manager (RSPM)</a>. In contrast to the previous solutions, this method allows the user to install binary packages as <em>user packages</em> under their home directory (virtually anywhere), instead of as <em>system packages</em>. The main issue is that the user has still to manage run-time system requirements themselves (i.e., shared libraries required by some packages to work), so this method by itself produces installations that are fundamentally broken.</p>
 <p>To fill this gap, this package not only provides an easy setup of RSPM, but also monitors and scans every installation for missing system requirements, and then automatically downloads, installs and configures them, relieving the user of this task. This is done following the same complementary philosophy: <strong>everything is installed as <em>user packages</em> under the home directory</strong>. More specifically, this package uses the path <code>~/.local/share/R/rspm</code> for this.</p>
 <p>The main technical issue here is that libraries are search for only in a few pre-configured places that belong to the system (such as <code>/usr/lib</code>), and thus we need a mechanism to feed our new user-hosted library paths to R packages, hopefully without restarting R and managing environment variables. This is achieved by <strong>automatically updating the <code>RPATH</code></strong> of every <code>.so</code> binary in our user R packages. This <code>RPATH</code> is an optional entry that lives in the header of ELF executables and shared libraries, and it is used by the dynamic linker as the primary search path if exists. Therefore, it is the perfect mechanism for this task, because it can be applied dynamically as new installations are made, and without requiring any special privilege.</p>
 </div>
