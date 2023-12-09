@@ -2,7 +2,7 @@
 Add support for Debian.
 
 ## Test environments
-- ubuntu:22.04, ubuntu:20.04, ubuntu:18.04 on GitHub
+- ubuntu:22.04, ubuntu:20.04 on GitHub
 - centos:stream9, centos:stream8, centos:centos7 on GitHub
 
 ## R CMD check results

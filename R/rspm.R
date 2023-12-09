@@ -6,7 +6,7 @@
 #' system requirements without administrative privileges. Currently supported
 #' distributions are CentOS / RHEL 7-9, and several RHEL derivatives
 #' (Rocky Linux, AlmaLinux, Oracle Linux, Amazon Linux 2),
-#' openSUSE / SLES 15.3-4, Debian 11-12, and Ubuntu LTS 18-22.
+#' openSUSE / SLES 15.4-5, Debian 11-12, and Ubuntu LTS 20-22.
 #'
 #' @author Iñaki Ucar
 #'

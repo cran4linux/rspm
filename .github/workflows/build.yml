@@ -16,12 +16,11 @@ jobs:
         - {image: 'centos', tag: 'centos7', repo: 'ghcr.io/cran4linux/r-'}
         - {image: 'centos', tag: 'stream8', repo: 'ghcr.io/cran4linux/r-'}
         - {image: 'centos', tag: 'stream9', repo: 'ghcr.io/cran4linux/r-'}
-        - {image: 'ubuntu', tag: '18.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '20.04',   repo: 'rocker/r-'}
         - {image: 'ubuntu', tag: '22.04',   repo: 'rocker/r-'}
         - {image: 'base',   tag: 'latest',  repo: 'rocker/r-'}
-        #- {image: 'leap',   tag: '15.3',    repo: 'opensuse/'}
         #- {image: 'leap',   tag: '15.4',    repo: 'opensuse/'}
+        #- {image: 'leap',   tag: '15.5',    repo: 'opensuse/'}
 
     steps:
     - name: Install dependencies (Ubuntu)

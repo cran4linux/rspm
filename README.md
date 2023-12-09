@@ -16,9 +16,9 @@
 - Support for **CentOS / RHEL** 7, 8 and 9.
 - Support for **RHEL derivatives**:
   Rocky Linux 8-9, AlmaLinux 8-9, Oracle Linux 7-9, Amazon Linux 2.
-- Support for **openSUSE / SLES** 15.3 and 15.4.
+- Support for **openSUSE / SLES** 15.4 and 15.5.
 - Support for **Debian** 11 and 12 (requires `apt-file`).
-- Support for **Ubuntu** 18.04, 20.04 and 22.04 (requires `apt-file`).
+- Support for **Ubuntu** 20.04 and 22.04 (requires `apt-file`).
 
 Both R packages and system dependencies **are installed into the user home**.
 For lightning-fast system-based installations (which have other advantages,
