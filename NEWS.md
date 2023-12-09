@@ -1,3 +1,7 @@
+# rspm devel
+
+- Export `missing_sysreqs()` for debugging purposes.
+
 # rspm 0.5.0
 
 - Move to cran4linux org on GitHub, update URLs.

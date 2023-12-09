@@ -4,7 +4,7 @@
 #' automatically called when the package is enabled via \code{\link{enable}}.
 #' It can also be called manually at any time to update the system requirements.
 #'
-#' @return No return value, called for side effects.
+#' @return \code{install_sysreqs}: No return value, called for side effects.
 #'
 #' @examples
 #' \dontrun{
@@ -20,7 +20,7 @@ install_sysreqs <- function() {
   message("Inspecting installed packages...")
 
   # get missing libraries
-  if (!length(libs <- ldd_missing()))
+  if (!length(libs <- unique(unlist(missing_sysreqs()))))
     return(invisible())
 
   # install sysreqs and update rpath
@@ -28,14 +28,31 @@ install_sysreqs <- function() {
   if (!root()) set_rpath()
 }
 
-ldd_missing <- function(lib.loc = NULL) {
+#' @return \code{missing_sysreqs}: A list of missing libraries, for debugging.
+#' @name manager
+#' @export
+missing_sysreqs <- function() {
+  libs <- ldd()
+  lib.loc <- attr(libs, "lib.loc")
+
+  libs <- lapply(libs, function(x) grep("not found$", x, value=TRUE))
+  libs <- lapply(libs, function(x) sapply(strsplit(x, " => "), "[", 1))
+
+  attr(libs, "lib.loc") <- lib.loc
+  libs
+}
+
+ldd <- function(lib.loc = NULL) {
   lib.loc <- user_lib(lib.loc)
   ldd <- check_requirements("ldd")
 
   libs <- list.files(lib.loc, "\\.so$", full.names=TRUE, recursive=TRUE)
   libs <- system_(ldd, p(libs), "2>&1")
-  libs <- grep("not found$", libs, value=TRUE)
-  libs <- sapply(strsplit(trimws(libs), " => "), "[", 1)
+  libs <- split(libs, findInterval(seq_along(libs), grep(":$", libs)))
+  names(libs) <- gsub(paste0(lib.loc, "/|:"), "", sapply(libs, "[", 1))
+  libs <- lapply(lapply(libs, "[", -1), trimws)
+
+  attr(libs, "lib.loc") <- lib.loc
   libs
 }
 

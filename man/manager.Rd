@@ -3,12 +3,17 @@
 \name{manager}
 \alias{manager}
 \alias{install_sysreqs}
+\alias{missing_sysreqs}
 \title{Manage System Requirements}
 \usage{
 install_sysreqs()
+
+missing_sysreqs()
 }
 \value{
-No return value, called for side effects.
+\code{install_sysreqs}: No return value, called for side effects.
+
+\code{missing_sysreqs}: A list of missing libraries, for debugging.
 }
 \description{
 Detect, install and configure system requirements. This function is
