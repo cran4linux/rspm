@@ -1,6 +1,7 @@
 # rspm devel
 
 - Export `missing_sysreqs()` for debugging purposes.
+- Fix call to tinytest function from namespace.
 - Update supported systems.
 
 # rspm 0.5.0
