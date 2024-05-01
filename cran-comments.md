@@ -1,5 +1,5 @@
-## Minor release
-Add support for Debian.
+## Patch release
+Fixes CRAN ERRORs.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04 on GitHub
