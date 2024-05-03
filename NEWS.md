@@ -1,3 +1,7 @@
+# rspm 0.5.2
+
+- Don't use `expect_match` for now to avoid test failures on CRAN.
+
 # rspm 0.5.1
 
 - Export `missing_sysreqs()` for debugging purposes.
