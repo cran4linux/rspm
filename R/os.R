@@ -11,6 +11,8 @@ os_install_sysreqs <- function(libs) {
 }
 
 os <- function() {
+  if (!file.exists("/etc/os-release"))
+    stop("OS not supported", call.=FALSE)
   os <- utils::read.table("/etc/os-release", sep="=", col.names=c("var", "val"),
                           stringsAsFactors=FALSE)
   os <- stats::setNames(as.list(os$val), os$var)

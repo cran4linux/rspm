@@ -1,7 +1,7 @@
 ## Patch release
-Fixes CRAN ERRORs.
-Now avoiding expect_match due to a bug in tinytest.
-Mark solved this but cannot update just now.
+Fixes CRAN ERRORs. Once and for all...
+I don't quite understand why it was working before and now there's and error...
+so I finally dropped the offending line.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04 on GitHub

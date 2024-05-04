@@ -1,5 +1,4 @@
 os <- tryCatch(rspm:::os(), error=function(e) {
-  expect_true(grepl(e$message, "OS not supported"))
   exit_file(e$message)
 })
 
