@@ -1,3 +1,7 @@
+# devel
+
+- Add support for Pop!_OS (#26 addressing #25).
+
 # rspm 0.5.3
 
 - Drop test on failure to avoid test failures on CRAN.
