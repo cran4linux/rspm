@@ -43,7 +43,6 @@ debian_install_sysreqs <- function(libs) {
   pkgs <- system_(apt_file, debian_options(), "-l search --regexp", patt)
 
   # download and unpack
-  message("Downloading and installing sysreqs...")
   os_install(pkgs)
 }
 

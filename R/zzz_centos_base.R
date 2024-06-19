@@ -20,6 +20,5 @@ centos_install_root <- function(pkgs) {
 }
 
 centos_install_sysreqs <- function(libs) {
-  message("Downloading and installing sysreqs...")
   os_install(paste0("*/", libs, collapse=" "))
 }

@@ -22,6 +22,5 @@ opensuse_install_sysreqs <- function(libs) {
   pkgs <- trimws(sapply(strsplit(pkgs, "\\|"), "[", 2))
 
   # download and unpack
-  message("Downloading and installing sysreqs...")
   os_install(pkgs)
 }
