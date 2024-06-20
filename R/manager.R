@@ -20,11 +20,24 @@ install_sysreqs <- function() {
   message("Inspecting installed packages...")
 
   # get missing libraries
-  if (!length(libs <- unique(unlist(missing_sysreqs()))))
+  if (!length(libs <- missing_sysreqs()))
     return(invisible())
 
-  # install sysreqs and update rpath
-  os_install_sysreqs(libs)
+  # install unique sysreqs
+  message("Downloading and installing sysreqs...")
+  os_install_sysreqs(unique(unlist(libs)))
+
+  # if this failed, try one by one
+  if (length(libs) == length(missing_sysreqs())) {
+    message("Installation failed! Trying package by package...")
+    for (i in seq_along(libs)) {
+      pkg <- strsplit(basename(names(libs)[i]), ".", fixed=TRUE)[[1]][1]
+      message("Downloading and installing sysreqs for ", pkg, "...")
+      os_install_sysreqs(libs[[i]])
+    }
+  }
+
+  # update rpath
   if (!root()) set_rpath()
 }
 
@@ -38,6 +51,7 @@ missing_sysreqs <- function() {
   libs <- lapply(libs, function(x) grep("not found$", x, value=TRUE))
   libs <- lapply(libs, function(x) sapply(strsplit(x, " => "), "[", 1))
 
+  libs <- Filter(length, libs)
   attr(libs, "lib.loc") <- lib.loc
   libs
 }
