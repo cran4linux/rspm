@@ -1,7 +1,5 @@
-## Patch release
-Fixes CRAN ERRORs. Once and for all...
-I don't quite understand why it was working before and now there's and error...
-so I finally dropped the offending line.
+## Minor release
+Adds support for PopOS and Amazon Linux 2023. Fixes new CRAN ERRORs.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04 on GitHub
