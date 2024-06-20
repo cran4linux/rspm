@@ -1,6 +1,7 @@
 # devel
 
 - Add support for Pop!_OS (#26 addressing #25).
+- Add support for Amazon Linux 2023 (#28 addressing #27).
 
 # rspm 0.5.3
 
