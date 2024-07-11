@@ -6,6 +6,8 @@ LABEL org.opencontainers.image.licenses="GPL-2.0" \
 
 # install R
 RUN echo "install_weak_deps=False" >> /etc/dnf/dnf.conf \
+    && sed -i -e 's/mirrorlist=/#mirrorlist=/g' -e 's/#baseurl=/baseurl=/g' \
+      -e 's/mirror.centos.org/vault.centos.org/g' /etc/yum.repos.d/*.repo \
     && dnf -y install 'dnf-command(config-manager)' \
     && dnf config-manager --set-enabled powertools \
     && dnf -y install epel-release epel-next-release \
