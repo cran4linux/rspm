@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tag: [centos7, stream8, stream9]
+        tag: [stream8, stream9]
 
     env:
       REGISTRY: ghcr.io
