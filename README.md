@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![Build Status](https://github.com/cran4linux/rspm/workflows/build/badge.svg)](https://github.com/cran4linux/rspm/actions)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rspm)](https://cran.r-project.org/package=rspm)
+[![Downloads](https://cranlogs.r-pkg.org/badges/rspm)](https://cran.r-project.org/package=rspm)
 <!-- badges: end -->
 
 ## Key features
