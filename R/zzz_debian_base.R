@@ -38,7 +38,8 @@ debian_install_sysreqs <- function(libs) {
   apt_file <- check_requirements("apt-file")
 
   # get package names
-  patt <- gsub(".", "\\.", paste0("'(", paste(libs, collapse="|"), ")'"), fixed=TRUE)
+  patt <- paste0("'(", paste(libs, collapse="|"), ")'")
+  patt <- gsub("(\\.|\\+)", "\\\\\\1", patt)
   system(apt_file, debian_options(), "update")
   pkgs <- system_(apt_file, debian_options(), "-l search --regexp", patt)
 

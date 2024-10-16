@@ -1,3 +1,7 @@
+# rspm devel
+
+- Fix regexp escaping in `apt-file` calls for Debian-like systems (#32).
+
 # rspm 0.6.0
 
 - Add support for Pop!_OS (#26 addressing #25).
