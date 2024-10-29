@@ -1,5 +1,5 @@
 ## Minor release
-Adds support for PopOS and Amazon Linux 2023. Fixes new CRAN ERRORs.
+Bugfix for Ubuntu systems.
 
 ## Test environments
 - ubuntu:22.04, ubuntu:20.04 on GitHub

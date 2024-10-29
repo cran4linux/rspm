@@ -1,4 +1,4 @@
-# rspm devel
+# rspm 0.6.1
 
 - Fix regexp escaping in `apt-file` calls for Debian-like systems (#32).
 
