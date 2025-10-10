@@ -1,7 +1,8 @@
-# rspm 0.6.2
+# rspm 0.7.0
 
 - Drop `userdir.R` in favor of `tools::R_user_dir()`, update licensing
   information accordingly.
+- Update supported OS versions and check matrix (#31).
 
 # rspm 0.6.1
 

@@ -14,12 +14,12 @@
 - **Full integration** with the system package manager to resolve, download and
   configure system requirements automagically without leaving your R console.
 - **Fully user mode**, no root privileges required.
-- Support for **CentOS / RHEL** 7, 8 and 9.
+- Support for **CentOS / RHEL** 8-10.
 - Support for **RHEL derivatives**:
-  Rocky Linux 8-9, AlmaLinux 8-9, Oracle Linux 7-9, Amazon Linux 2-2023.
-- Support for **openSUSE / SLES** 15.4 and 15.5.
-- Support for **Debian** 11 and 12 (requires `apt-file`).
-- Support for **Ubuntu** 20.04 and 22.04 (requires `apt-file`).
+  Rocky Linux, AlmaLinux, Oracle Linux, Amazon Linux 2-2023.
+- Support for **openSUSE / SLES** 15.6.
+- Support for **Debian** 12 (requires `apt-file`).
+- Support for **Ubuntu** 22.04 and 24.04 (requires `apt-file`).
 
 Both R packages and system dependencies **are installed into the user home**.
 For lightning-fast system-based installations (which have other advantages,
