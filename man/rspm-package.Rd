@@ -10,9 +10,9 @@ Enables binary package installations on Linux distributions.
 Provides access to RStudio public repositories at
 \url{https://packagemanager.posit.co}, and transparent management of
 system requirements without administrative privileges. Currently supported
-distributions are CentOS / RHEL 7-9, and several RHEL derivatives
+distributions are CentOS / RHEL, and several RHEL derivatives
 (Rocky Linux, AlmaLinux, Oracle Linux, Amazon Linux),
-openSUSE / SLES 15.4-5, Debian 11-12, and Ubuntu LTS 20-22.
+openSUSE / SLES, Debian, and Ubuntu LTS.
 }
 \references{
 \url{https://cran4linux.github.io/rspm/}
