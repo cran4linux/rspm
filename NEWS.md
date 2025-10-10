@@ -1,3 +1,8 @@
+# rspm 0.6.2
+
+- Drop `userdir.R` in favor of `tools::R_user_dir()`, update licensing
+  information accordingly.
+
 # rspm 0.6.1
 
 - Fix regexp escaping in `apt-file` calls for Debian-like systems (#32).

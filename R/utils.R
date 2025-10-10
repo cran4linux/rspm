@@ -8,12 +8,8 @@ user_dir_base <- NULL
 
 user_dir <- function(path) {
   user_dir <- user_dir_base
-  if (is.null(user_dir)) {
-    tenv <- asNamespace("tools")
-    if (exists("R_user_dir", tenv))
-      R_user_dir <- get("R_user_dir", tenv)
-    user_dir <- R_user_dir("rspm")
-  }
+  if (is.null(user_dir))
+    user_dir <- tools::R_user_dir("rspm")
   if (!missing(path))
     user_dir <- file.path(user_dir, path)
   user_dir
