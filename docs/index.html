@@ -8,11 +8,11 @@
 <title>RStudio Package Manager • rspm</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="RStudio Package Manager">
-<meta name="description" content="Enables binary package installations on Linux distributions. Provides access to RStudio public repositories at &lt;https://packagemanager.posit.co&gt;, and transparent management of system requirements without administrative privileges. Currently supported distributions are CentOS / RHEL 7-9, and several RHEL derivatives (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux), openSUSE / SLES 15.4-5, Debian 11-12, and Ubuntu LTS 20-22.">
-<meta property="og:description" content="Enables binary package installations on Linux distributions. Provides access to RStudio public repositories at &lt;https://packagemanager.posit.co&gt;, and transparent management of system requirements without administrative privileges. Currently supported distributions are CentOS / RHEL 7-9, and several RHEL derivatives (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux), openSUSE / SLES 15.4-5, Debian 11-12, and Ubuntu LTS 20-22.">
+<meta name="description" content="Enables binary package installations on Linux distributions. Provides access to RStudio public repositories at &lt;https://packagemanager.posit.co&gt;, and transparent management of system requirements without administrative privileges. Currently supported distributions are CentOS / RHEL, and several RHEL derivatives (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux), openSUSE / SLES, Debian, and Ubuntu LTS.">
+<meta property="og:description" content="Enables binary package installations on Linux distributions. Provides access to RStudio public repositories at &lt;https://packagemanager.posit.co&gt;, and transparent management of system requirements without administrative privileges. Currently supported distributions are CentOS / RHEL, and several RHEL derivatives (Rocky Linux, AlmaLinux, Oracle Linux, and Amazon Linux), openSUSE / SLES, Debian, and Ubuntu LTS.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">rspm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,11 +62,11 @@
 <strong>Full integration</strong> with the system package manager to resolve, download and configure system requirements automagically without leaving your R console.</li>
 <li>
 <strong>Fully user mode</strong>, no root privileges required.</li>
-<li>Support for <strong>CentOS / RHEL</strong> 7, 8 and 9.</li>
-<li>Support for <strong>RHEL derivatives</strong>: Rocky Linux 8-9, AlmaLinux 8-9, Oracle Linux 7-9, Amazon Linux 2-2023.</li>
-<li>Support for <strong>openSUSE / SLES</strong> 15.4 and 15.5.</li>
-<li>Support for <strong>Debian</strong> 11 and 12 (requires <code>apt-file</code>).</li>
-<li>Support for <strong>Ubuntu</strong> 20.04 and 22.04 (requires <code>apt-file</code>).</li>
+<li>Support for <strong>CentOS / RHEL</strong> 8-10.</li>
+<li>Support for <strong>RHEL derivatives</strong>: Rocky Linux, AlmaLinux, Oracle Linux, Amazon Linux 2-2023.</li>
+<li>Support for <strong>openSUSE / SLES</strong> 15.6.</li>
+<li>Support for <strong>Debian</strong> 12 (requires <code>apt-file</code>).</li>
+<li>Support for <strong>Ubuntu</strong> 22.04 and 24.04 (requires <code>apt-file</code>).</li>
 </ul>
 <p>Both R packages and system dependencies <strong>are installed into the user home</strong>. For lightning-fast system-based installations (which have other advantages, such as multitenancy, reversibility and automatic updates, still without root privileges), see the <a href="https://cran4linux.github.io/bspm/" class="external-link">bspm</a> package and projects such as <a href="https://github.com/cran4linux/cran2copr" class="external-link">cran2copr</a> for Fedora or <a href="https://github.com/eddelbuettel/r2u" class="external-link">r2u</a> for Ubuntu.</p>
 </div>
@@ -150,7 +150,7 @@
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a> | <a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
@@ -166,8 +166,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Iñaki Ucar <br><small class="roles"> Author, copyright holder, maintainer </small> <a href="https://orcid.org/0000-0001-6403-5550" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>R Core Team <br><small class="roles"> Author, copyright holder </small>  </li>
+<li>Iñaki Ucar <br><small class="roles"> Author, copyright holder, maintainer </small> <a href="https://orcid.org/0000-0001-6403-5550" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -185,11 +184,11 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Iñaki Ucar, R Core Team.</p>
+  <p>Developed by Iñaki Ucar.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
