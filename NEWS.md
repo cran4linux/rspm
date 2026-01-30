@@ -1,3 +1,7 @@
+# rspm devel
+
+- Add support for Linux Mint (#36 addressing #38).
+
 # rspm 0.7.0
 
 - Drop `userdir.R` in favor of `tools::R_user_dir()`, update licensing
